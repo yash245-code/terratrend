@@ -1,0 +1,85 @@
+# ── Environment & secrets ──
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.netrc
+_netrc
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ── Virtual environments ──
+venv/
+.venv/
+env/
+ENV/
+
+# ── Flask ──
+instance/
+.webassets-cache
+flask_session/
+
+# ── Testing & coverage ──
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ── Jupyter ──
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── TerraTrend data (large NASA files) ──
+data/raw/
+*.nc4
+*.hdf5
+*.h5
+data/tmp/
+data/cache/
+
+# Keep the processed regional cube and crop rules tracked
+!data/processed/
+!data/processed/india_cube.nc
+!data/crops/
+!data/crops/crop_rules.json
+
+# ── Earthaccess / NASA Earthdata ──
+.earthaccess/
+.edl_token
+
+# ── Node / Tailwind tooling (if used) ──
+node_modules/
+npm-debug.log*
+yarn-error.log*
+static/css/tailwind.build.css
+
+# ── Logs & temp ──
+*.log
+logs/
+*.tmp
+*.bak
+*.swp
+
+# ── OS files ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ──
+.vscode/
+.idea/
+*.code-workspace
