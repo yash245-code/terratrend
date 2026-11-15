@@ -32,11 +32,11 @@ class CubeStore:
 
     def load_all(self) -> None:
         """Scan disk and load all existing cube NetCDF files into RAM."""
-        # 1. Load India Grid
+        # 1. Load India Grid (lazy memory-mapped to conserve RAM)
         grid_path = self.processed_dir / "india_grid.nc"
         if grid_path.exists():
             try:
-                self.grid_ds = xr.open_dataset(grid_path).load()
+                self.grid_ds = xr.open_dataset(grid_path)
                 self._lats = self.grid_ds["lat"].values
                 self._lons = self.grid_ds["lon"].values
                 if "india_mask" in self.grid_ds:
@@ -45,21 +45,16 @@ class CubeStore:
             except Exception as e:
                 log.error(f"Failed to load {grid_path}: {e}")
 
-        # 2. Load Dataset Cubes
+        # 2. Load Dataset Cubes (lazy memory-mapped on demand)
         for key, meta in DATASETS.items():
             cube_file = self.processed_dir / f"{key}_cube.nc"
             if cube_file.exists():
                 try:
-                    ds = xr.open_dataset(cube_file).load()
-                    # Cast floats to float32 to conserve RAM
-                    float_vars = [v for v in ds.data_vars if ds[v].dtype in [np.float64, np.float32]]
-                    for fv in float_vars:
-                        ds[fv] = ds[fv].astype(np.float32)
-
+                    ds = xr.open_dataset(cube_file)
                     self.cubes[key] = ds
-                    sz_mb = ds.nbytes / (1024.0 * 1024.0)
+                    sz_mb = cube_file.stat().st_size / (1024.0 * 1024.0)
                     self.total_ram_mb += sz_mb
-                    log.info(f"Loaded {key}_cube.nc ({sz_mb:.1f} MB) in RAM.")
+                    log.info(f"Mounted {key}_cube.nc ({sz_mb:.1f} MB disk-backed) in CubeStore.")
                 except Exception as e:
                     log.error(f"Error loading {cube_file}: {e}")
 

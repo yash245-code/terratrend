@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import logging
+import gc
 from pathlib import Path
 import sys
 from typing import Dict, Any
@@ -296,8 +297,8 @@ def generate_all_cubes():
     n_lon = len(lons)
     log.info(f"Grid dimensions: lat={n_lat}, lon={n_lon}, in_india_cells={np.sum(india_mask)}")
 
-    # Time coordinate: 15 years monthly (2010-01-01 to 2024-12-01 = 180 months)
-    times = pd.date_range("2010-01-01", "2024-12-31", freq="MS")
+    # Time coordinate: 10 years monthly (2015-01-01 to 2024-12-01 = 120 months)
+    times = pd.date_range("2015-01-01", "2024-12-31", freq="MS")
     n_time = len(times)
     log.info(f"Time steps: {n_time} months ({times[0].strftime('%Y-%m')} to {times[-1].strftime('%Y-%m')})")
 
@@ -341,6 +342,8 @@ def generate_all_cubes():
     hwsd_encoding = {v: comp for v in hwsd_ds.data_vars}
     hwsd_ds.to_netcdf(PROCESSED_DIR / "hwsd_cube.nc", encoding=hwsd_encoding)
     log.info("Saved hwsd_cube.nc.")
+    del hwsd_ds, silt_grid, gravel_grid, sod_grid, drainage_grid, texture_grid
+    gc.collect()
 
     # -------------------------------------------------------------
     # 2. GLDAS CUBE (gldas_cube.nc) - REQUIRED
@@ -405,6 +408,8 @@ def generate_all_cubes():
     gldas_encoding = {v: comp for v in gldas_ds.data_vars}
     gldas_ds.to_netcdf(PROCESSED_DIR / "gldas_cube.nc", encoding=gldas_encoding)
     log.info("Saved gldas_cube.nc.")
+    del gldas_ds
+    gc.collect()
 
     # -------------------------------------------------------------
     # 3. MERRA-2 CUBE (merra2_cube.nc)
@@ -431,6 +436,8 @@ def generate_all_cubes():
     merra2_encoding = {v: comp for v in merra2_ds.data_vars}
     merra2_ds.to_netcdf(PROCESSED_DIR / "merra2_cube.nc", encoding=merra2_encoding)
     log.info("Saved merra2_cube.nc.")
+    del merra2_ds, m2_t2m, m2_rf, m2_evap, m2_gwetroot, m2_gwettop
+    gc.collect()
 
     # -------------------------------------------------------------
     # 4. GPM IMERG CUBE (gpm_cube.nc)
@@ -446,6 +453,8 @@ def generate_all_cubes():
     gpm_encoding = {v: comp for v in gpm_ds.data_vars}
     gpm_ds.to_netcdf(PROCESSED_DIR / "gpm_cube.nc", encoding=gpm_encoding)
     log.info("Saved gpm_cube.nc.")
+    del gpm_ds, gpm_precip
+    gc.collect()
 
     # -------------------------------------------------------------
     # 5. MODIS VEGETATION CUBE (modis_cube.nc)
@@ -478,6 +487,8 @@ def generate_all_cubes():
     }
     modis_ds.to_netcdf(PROCESSED_DIR / "modis_cube.nc", encoding=modis_encoding)
     log.info("Saved modis_cube.nc.")
+    del modis_ds, ndvi_int, evi_int, rel_int
+    gc.collect()
 
     # -------------------------------------------------------------
     # 6. AIRS TEMPERATURE CUBE (airs_cube.nc)
@@ -503,6 +514,8 @@ def generate_all_cubes():
     airs_encoding = {v: comp for v in airs_ds.data_vars}
     airs_ds.to_netcdf(PROCESSED_DIR / "airs_cube.nc", encoding=airs_encoding)
     log.info("Saved airs_cube.nc.")
+    del airs_ds, airs_t, airs_rh
+    gc.collect()
 
     # -------------------------------------------------------------
     # 7. OMI ATMOSPHERIC CUBE (omi_cube.nc)
@@ -529,6 +542,8 @@ def generate_all_cubes():
     omi_encoding = {v: comp for v in omi_ds.data_vars}
     omi_ds.to_netcdf(PROCESSED_DIR / "omi_cube.nc", encoding=omi_encoding)
     log.info("Saved omi_cube.nc.")
+    del omi_ds, no2_3d, o3_3d
+    gc.collect()
 
     log.info("All 7 NetCDF cubes successfully generated with realistic state-by-state calibrations!")
 
