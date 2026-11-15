@@ -70,6 +70,16 @@ def create_app(config_class: type = Config) -> Flask:
         store = get_store()
         app.extensions["cubes"] = store
         operational, missing = store.is_operational()
+        if not operational:
+            log.warning(f"Cubes missing ({missing}). Running automatic pipeline generation...")
+            try:
+                from pipeline.generate_demo_cubes import generate_all_cubes
+                generate_all_cubes()
+                store.load_all()
+                operational, missing = store.is_operational()
+            except Exception as ge:
+                log.error(f"Auto-generation of cubes encountered error: {ge}")
+
         if operational:
             log.info("TerraTrend CubeStore fully operational in RAM.")
         else:
@@ -103,7 +113,7 @@ def create_app(config_class: type = Config) -> Flask:
 app = create_app()
 
 if __name__ == "__main__":
-    host = os.getenv("HOST", "127.0.0.1")
+    host = os.getenv("HOST", "0.0.0.0")
     port = int(os.getenv("PORT", "5000"))
     log.info(f"Starting TerraTrend backend server on http://{host}:{port}")
     app.run(host=host, port=port, debug=app.config.get("DEBUG", False))
