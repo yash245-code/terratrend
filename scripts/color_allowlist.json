@@ -1,9 +1,0 @@
-{
-  "comment": "Explicit allowlist for justified color instances outside theme.css",
-  "allowed": [
-    "meta name=\"theme-color\"",
-    "metaThemeColor.setAttribute(\"content\"",
-    "/* allow: leaflet-default-shadow */",
-    "/* allow: katex-font */"
-  ]
-}
