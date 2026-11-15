@@ -563,8 +563,12 @@ class Config:
     PROCESSED_DIR = PROCESSED_DIR
 
     # Database Configuration
-    DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{DATA_DIR / 'teratrend.db'}")
-    AUTO_CREATE_DB = os.getenv("AUTO_CREATE_DB", "false").lower() in ("true", "1", "yes")
+    if os.getenv("VERCEL"):
+        DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:////tmp/teratrend.db")
+        AUTO_CREATE_DB = True
+    else:
+        DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{DATA_DIR / 'teratrend.db'}")
+        AUTO_CREATE_DB = os.getenv("AUTO_CREATE_DB", "true").lower() in ("true", "1", "yes")
     ADMIN_TOKEN = os.getenv("ADMIN_TOKEN", "")
 
     # Caching

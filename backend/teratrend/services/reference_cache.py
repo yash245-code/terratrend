@@ -47,6 +47,10 @@ class ReferenceDataCache:
     def load(self, fail_fast: bool = True) -> "ReferenceDataCache":
         """Load or reload all reference datasets from the database into memory."""
         log.info("Loading reference data from database into RAM...")
+        if Config.AUTO_CREATE_DB:
+            from db.base import get_engine, Base
+            Base.metadata.create_all(get_engine())
+
         with get_session() as session:
             # Check if database has crops
             crop_count = session.scalar(select(func.count(Crop.id))) or 0
