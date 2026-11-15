@@ -172,7 +172,7 @@
       html: `
         <div style="position:relative; width:24px; height:24px;">
           <div style="position:absolute; width:24px; height:24px; border-radius:50%; background:var(--primary); opacity:0.35; animation:pulse 2s infinite ease-in-out;"></div>
-          <div style="position:absolute; top:4px; left:4px; width:16px; height:16px; border-radius:50%; background:var(--primary); border:2px solid var(--moss); box-shadow:0 0 10px var(--primary);"></div>
+          <div style="position:absolute; top:4px; left:4px; width:16px; height:16px; border-radius:50%; background:var(--primary); border:2px solid #06080d; box-shadow:0 0 10px var(--primary);"></div>
         </div>
       `,
       iconSize: [24, 24],
@@ -922,46 +922,42 @@
         currentLeftChartTab = btn.dataset.chart || "eco";
         const indicator = document.getElementById("activeChartIndicator");
         if (indicator) indicator.textContent = currentLeftChartTab.toUpperCase();
-        if (state.currentReport) {
-          renderLeftChart(state.currentReport);
-        }
+        renderLeftChart(state.currentReport);
       });
     });
 
-    window.addEventListener("teratrend:theme-changed", () => {
-      if (state.currentReport) {
-        renderLeftChart(state.currentReport);
-      }
-    });
+    // Immediate initial render on startup so graph is never blank
+    renderLeftChart(state.currentReport);
   }
 
   function renderLeftChart(report) {
     const canvas = document.getElementById("leftAnalyticsChart");
-    if (!canvas || typeof Chart === "undefined" || !report) return;
+    if (!canvas || typeof Chart === "undefined") return;
 
     if (leftChartInstance) {
       leftChartInstance.destroy();
       leftChartInstance = null;
     }
 
-    const vizWater = getCssVar("--viz-water");
-    const vizOrange = getCssVar("--viz-orange");
-    const vizGreen = getCssVar("--viz-green");
-    const vizRed = getCssVar("--viz-red");
-    const textMuted = getCssVar("--text-muted");
-    const borderCol = getCssVar("--border");
-    const surfaceCol = getCssVar("--surface");
-    const textCol = getCssVar("--text");
+    const vizWater = getCssVar("--viz-water", "#0ea5e9");
+    const vizOrange = getCssVar("--viz-orange", "#f59e0b");
+    const vizGreen = getCssVar("--viz-green", "#10b981");
+    const vizRed = getCssVar("--viz-red", "#f43f5e");
+    const textMuted = getCssVar("--text-muted", "#94a3b8");
+    const borderCol = getCssVar("--border-subtle", "rgba(255, 255, 255, 0.08)");
+    const surfaceCol = getCssVar("--bg-surface", "#131a26");
+    const textCol = getCssVar("--text-primary", "#f8fafc");
 
     const summaryP = document.getElementById("analyticsSummaryP");
     const pill1 = document.getElementById("metricPill1");
     const pill2 = document.getElementById("metricPill2");
 
-    const f = report.factors || {};
-    const rf = f.moisture?.values?.annual_rainfall_mm || 1040;
-    const wet = f.moisture?.values?.root_zone_wetness || 0.45;
-    const temp = f.temperature?.values?.mean_temperature_c || 25.5;
-    const econ = report.economics || {};
+    const rep = report || {};
+    const f = rep.factors || {};
+    const rf = f.moisture?.values?.annual_rainfall_mm ?? 1040;
+    const wet = f.moisture?.values?.root_zone_wetness ?? 0.45;
+    const temp = f.temperature?.values?.mean_temperature_c ?? 25.5;
+    const econ = rep.economics || {};
 
     let chartConfig = null;
 
