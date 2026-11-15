@@ -65,23 +65,13 @@ def create_app(config_class: type = Config) -> Flask:
     except Exception as e:
         log.warning(f"Reference cache initialization note: {e}")
 
-    # 3. Preload all available NetCDF cubes into RAM
+    # 3. Load NetCDF cubes (generated at build time, disk-backed lazy access)
     try:
         store = get_store()
         app.extensions["cubes"] = store
         operational, missing = store.is_operational()
-        if not operational:
-            log.warning(f"Cubes missing ({missing}). Running automatic pipeline generation...")
-            try:
-                from pipeline.generate_demo_cubes import generate_all_cubes
-                generate_all_cubes()
-                store.load_all()
-                operational, missing = store.is_operational()
-            except Exception as ge:
-                log.error(f"Auto-generation of cubes encountered error: {ge}")
-
         if operational:
-            log.info("TerraTrend CubeStore fully operational in RAM.")
+            log.info("TerraTrend CubeStore fully operational (lazy disk-backed).")
         else:
             log.warning(f"CubeStore operating in degraded mode. Missing required: {missing}")
     except Exception as e:

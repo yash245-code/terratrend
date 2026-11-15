@@ -2,7 +2,7 @@ services:
   - type: web
     name: teratrend
     runtime: python
-    buildCommand: "pip install -r backend/requirements.txt"
+    buildCommand: "pip install -r backend/requirements.txt && PYTHONPATH=backend python backend/pipeline/generate_demo_cubes.py"
     startCommand: "gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120"
     envVars:
       - key: PYTHON_VERSION
