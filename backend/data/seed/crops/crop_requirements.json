@@ -1,0 +1,955 @@
+{
+  "wheat": {
+    "key": "wheat",
+    "name": "Wheat",
+    "local_name": "Gehun (\u0917\u0947\u0939\u0942\u0902)",
+    "group": "cereals",
+    "seasons": [
+      "rabi"
+    ],
+    "cycle_days": 120,
+    "temperature_trapezoid": [
+      5.0,
+      15.0,
+      24.0,
+      32.0
+    ],
+    "rainfall_trapezoid": [
+      200.0,
+      400.0,
+      750.0,
+      1200.0
+    ],
+    "ph_trapezoid": [
+      5.5,
+      6.0,
+      7.5,
+      8.5
+    ],
+    "preferred_textures": [
+      "loam",
+      "silt_loam",
+      "clay_loam",
+      "sandy_clay_loam"
+    ],
+    "tolerated_textures": [
+      "sandy_loam",
+      "silty_clay_loam",
+      "clay"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 6.0,
+    "water_demand": "medium",
+    "base_yield_cv": 0.12,
+    "notes": "Cool winter cereal, sensitive to terminal heat during grain filling.",
+    "source": "ICAR-IIWBR package of practices & FAO EcoCrop",
+    "verification_status": "needs_agronomist_review"
+  },
+  "rice": {
+    "key": "rice",
+    "name": "Rice (Paddy)",
+    "local_name": "Dhan / Chawal (\u0927\u093e\u0928)",
+    "group": "cereals",
+    "seasons": [
+      "kharif"
+    ],
+    "cycle_days": 135,
+    "temperature_trapezoid": [
+      18.0,
+      22.0,
+      32.0,
+      38.0
+    ],
+    "rainfall_trapezoid": [
+      600.0,
+      1000.0,
+      2200.0,
+      3500.0
+    ],
+    "ph_trapezoid": [
+      5.0,
+      5.5,
+      7.2,
+      8.2
+    ],
+    "preferred_textures": [
+      "clay",
+      "silty_clay",
+      "clay_loam",
+      "silty_clay_loam"
+    ],
+    "tolerated_textures": [
+      "silt_loam",
+      "loam"
+    ],
+    "preferred_drainage": [
+      "imperfectly",
+      "poorly",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 3.0,
+    "water_demand": "high",
+    "base_yield_cv": 0.15,
+    "notes": "High water requirement, benefits from moisture retentive heavy soils.",
+    "source": "ICAR-NRRI package of practices",
+    "verification_status": "needs_agronomist_review"
+  },
+  "maize": {
+    "key": "maize",
+    "name": "Maize",
+    "local_name": "Makka (\u092e\u0915\u094d\u0915\u093e)",
+    "group": "cereals",
+    "seasons": [
+      "kharif",
+      "rabi"
+    ],
+    "cycle_days": 105,
+    "temperature_trapezoid": [
+      12.0,
+      18.0,
+      30.0,
+      38.0
+    ],
+    "rainfall_trapezoid": [
+      400.0,
+      600.0,
+      1100.0,
+      1800.0
+    ],
+    "ph_trapezoid": [
+      5.5,
+      6.0,
+      7.5,
+      8.5
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "silt_loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "sandy_clay_loam",
+      "loamy_sand"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 4.0,
+    "water_demand": "medium",
+    "base_yield_cv": 0.16,
+    "notes": "Versatile cereal, intolerant of waterlogging during early stages.",
+    "source": "ICAR-IIMR package of practices",
+    "verification_status": "needs_agronomist_review"
+  },
+  "sorghum": {
+    "key": "sorghum",
+    "name": "Sorghum",
+    "local_name": "Jowar (\u091c\u094d\u0935\u093e\u0930)",
+    "group": "cereals",
+    "seasons": [
+      "kharif",
+      "rabi"
+    ],
+    "cycle_days": 110,
+    "temperature_trapezoid": [
+      15.0,
+      24.0,
+      34.0,
+      42.0
+    ],
+    "rainfall_trapezoid": [
+      300.0,
+      450.0,
+      800.0,
+      1200.0
+    ],
+    "ph_trapezoid": [
+      5.5,
+      6.2,
+      8.2,
+      8.8
+    ],
+    "preferred_textures": [
+      "clay_loam",
+      "loam",
+      "sandy_loam",
+      "clay"
+    ],
+    "tolerated_textures": [
+      "silt_loam",
+      "loamy_sand"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 6.8,
+    "water_demand": "low",
+    "base_yield_cv": 0.2,
+    "notes": "Drought resilient millets/cereal suited for semi-arid tropics.",
+    "source": "ICAR-IIMR (Hyderabad)",
+    "verification_status": "needs_agronomist_review"
+  },
+  "pearl_millet": {
+    "key": "pearl_millet",
+    "name": "Pearl Millet",
+    "local_name": "Bajra (\u092c\u093e\u091c\u0930\u093e)",
+    "group": "cereals",
+    "seasons": [
+      "kharif"
+    ],
+    "cycle_days": 85,
+    "temperature_trapezoid": [
+      16.0,
+      26.0,
+      36.0,
+      44.0
+    ],
+    "rainfall_trapezoid": [
+      200.0,
+      350.0,
+      650.0,
+      1000.0
+    ],
+    "ph_trapezoid": [
+      5.5,
+      6.5,
+      8.2,
+      8.8
+    ],
+    "preferred_textures": [
+      "loamy_sand",
+      "sandy_loam",
+      "loam"
+    ],
+    "tolerated_textures": [
+      "sand",
+      "sandy_clay_loam"
+    ],
+    "preferred_drainage": [
+      "excessively",
+      "well"
+    ],
+    "salinity_tolerance_ece": 5.5,
+    "water_demand": "low",
+    "base_yield_cv": 0.22,
+    "notes": "Highly drought and heat tolerant crop grown in light soils.",
+    "source": "ICAR-AICRP on Pearl Millet",
+    "verification_status": "needs_agronomist_review"
+  },
+  "finger_millet": {
+    "key": "finger_millet",
+    "name": "Finger Millet",
+    "local_name": "Ragi / Mandua (\u0930\u093e\u0917\u0940)",
+    "group": "cereals",
+    "seasons": [
+      "kharif"
+    ],
+    "cycle_days": 105,
+    "temperature_trapezoid": [
+      14.0,
+      20.0,
+      30.0,
+      36.0
+    ],
+    "rainfall_trapezoid": [
+      400.0,
+      600.0,
+      1000.0,
+      1500.0
+    ],
+    "ph_trapezoid": [
+      5.0,
+      5.8,
+      7.5,
+      8.2
+    ],
+    "preferred_textures": [
+      "red_loam",
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "loamy_sand",
+      "gravelly_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 4.0,
+    "water_demand": "low",
+    "base_yield_cv": 0.18,
+    "notes": "Nutri-cereal thriving across Deccan plateau and hill slopes.",
+    "source": "ICAR-AICRP Small Millets",
+    "verification_status": "needs_agronomist_review"
+  },
+  "barley": {
+    "key": "barley",
+    "name": "Barley",
+    "local_name": "Jau (\u091c\u094c)",
+    "group": "cereals",
+    "seasons": [
+      "rabi"
+    ],
+    "cycle_days": 115,
+    "temperature_trapezoid": [
+      6.0,
+      14.0,
+      23.0,
+      30.0
+    ],
+    "rainfall_trapezoid": [
+      200.0,
+      350.0,
+      650.0,
+      1000.0
+    ],
+    "ph_trapezoid": [
+      6.0,
+      6.8,
+      8.4,
+      9.0
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "loamy_sand",
+      "silty_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 8.0,
+    "water_demand": "low",
+    "base_yield_cv": 0.16,
+    "notes": "Highly salt and alkalinity tolerant winter cereal.",
+    "source": "ICAR-IIWBR Karnal",
+    "verification_status": "needs_agronomist_review"
+  },
+  "chickpea": {
+    "key": "chickpea",
+    "name": "Chickpea (Gram)",
+    "local_name": "Chana (\u091a\u0928\u093e)",
+    "group": "pulses",
+    "seasons": [
+      "rabi"
+    ],
+    "cycle_days": 110,
+    "temperature_trapezoid": [
+      8.0,
+      16.0,
+      26.0,
+      33.0
+    ],
+    "rainfall_trapezoid": [
+      250.0,
+      400.0,
+      700.0,
+      1000.0
+    ],
+    "ph_trapezoid": [
+      5.8,
+      6.5,
+      7.8,
+      8.5
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam",
+      "clay"
+    ],
+    "tolerated_textures": [
+      "silt_loam",
+      "silty_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 3.0,
+    "water_demand": "low",
+    "base_yield_cv": 0.18,
+    "notes": "Major rabi pulse; sensitive to excessive moisture and frost.",
+    "source": "ICAR-IIPR Kanpur",
+    "verification_status": "needs_agronomist_review"
+  },
+  "pigeon_pea": {
+    "key": "pigeon_pea",
+    "name": "Pigeon Pea (Red Gram / Arhar)",
+    "local_name": "Tur / Arhar (\u0924\u0941\u0905\u0930 / \u0905\u0930\u0939\u0930)",
+    "group": "pulses",
+    "seasons": [
+      "kharif"
+    ],
+    "cycle_days": 160,
+    "temperature_trapezoid": [
+      16.0,
+      24.0,
+      34.0,
+      40.0
+    ],
+    "rainfall_trapezoid": [
+      500.0,
+      700.0,
+      1100.0,
+      1600.0
+    ],
+    "ph_trapezoid": [
+      5.5,
+      6.2,
+      7.8,
+      8.4
+    ],
+    "preferred_textures": [
+      "deep_loam",
+      "sandy_clay_loam",
+      "clay_loam",
+      "loam"
+    ],
+    "tolerated_textures": [
+      "clay",
+      "sandy_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "excessively"
+    ],
+    "salinity_tolerance_ece": 3.5,
+    "water_demand": "low",
+    "base_yield_cv": 0.2,
+    "notes": "Deep rooted pulse; fixes atmospheric nitrogen, hates stagnant water.",
+    "source": "ICAR-IIPR Kanpur",
+    "verification_status": "needs_agronomist_review"
+  },
+  "mung_bean": {
+    "key": "mung_bean",
+    "name": "Mung Bean (Green Gram)",
+    "local_name": "Moong (\u092e\u0942\u0902\u0917)",
+    "group": "pulses",
+    "seasons": [
+      "kharif",
+      "zaid"
+    ],
+    "cycle_days": 70,
+    "temperature_trapezoid": [
+      18.0,
+      25.0,
+      35.0,
+      42.0
+    ],
+    "rainfall_trapezoid": [
+      300.0,
+      450.0,
+      800.0,
+      1100.0
+    ],
+    "ph_trapezoid": [
+      6.0,
+      6.5,
+      7.8,
+      8.4
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "silt_loam",
+      "loamy_sand"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 3.2,
+    "water_demand": "low",
+    "base_yield_cv": 0.22,
+    "notes": "Short-duration pulse suited for crop rotations and catch cropping.",
+    "source": "ICAR-IIPR Kanpur",
+    "verification_status": "needs_agronomist_review"
+  },
+  "lentil": {
+    "key": "lentil",
+    "name": "Lentil",
+    "local_name": "Masur (\u092e\u0938\u0942\u0930)",
+    "group": "pulses",
+    "seasons": [
+      "rabi"
+    ],
+    "cycle_days": 115,
+    "temperature_trapezoid": [
+      6.0,
+      14.0,
+      24.0,
+      30.0
+    ],
+    "rainfall_trapezoid": [
+      250.0,
+      400.0,
+      700.0,
+      950.0
+    ],
+    "ph_trapezoid": [
+      5.8,
+      6.2,
+      7.6,
+      8.2
+    ],
+    "preferred_textures": [
+      "loam",
+      "clay_loam",
+      "silt_loam"
+    ],
+    "tolerated_textures": [
+      "sandy_loam",
+      "clay"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 2.8,
+    "water_demand": "low",
+    "base_yield_cv": 0.17,
+    "notes": "Hardy cool-season pulse grown rainfed on residual soil moisture.",
+    "source": "ICAR-IIPR Kanpur",
+    "verification_status": "needs_agronomist_review"
+  },
+  "mustard": {
+    "key": "mustard",
+    "name": "Mustard (Rapeseed & Mustard)",
+    "local_name": "Sarson / Raya (\u0938\u0930\u0938\u094b\u0902)",
+    "group": "oilseeds",
+    "seasons": [
+      "rabi"
+    ],
+    "cycle_days": 120,
+    "temperature_trapezoid": [
+      6.0,
+      14.0,
+      24.0,
+      30.0
+    ],
+    "rainfall_trapezoid": [
+      250.0,
+      350.0,
+      650.0,
+      950.0
+    ],
+    "ph_trapezoid": [
+      5.8,
+      6.2,
+      7.8,
+      8.5
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "loamy_sand",
+      "silty_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 5.0,
+    "water_demand": "low",
+    "base_yield_cv": 0.18,
+    "notes": "Dominant rabi oilseed crop in northern and western India.",
+    "source": "ICAR-DRMR Bharatpur",
+    "verification_status": "needs_agronomist_review"
+  },
+  "groundnut": {
+    "key": "groundnut",
+    "name": "Groundnut (Peanut)",
+    "local_name": "Mungphali (\u092e\u0942\u0902\u0917\u092b\u0932\u0940)",
+    "group": "oilseeds",
+    "seasons": [
+      "kharif",
+      "rabi"
+    ],
+    "cycle_days": 115,
+    "temperature_trapezoid": [
+      18.0,
+      24.0,
+      32.0,
+      38.0
+    ],
+    "rainfall_trapezoid": [
+      450.0,
+      600.0,
+      1000.0,
+      1400.0
+    ],
+    "ph_trapezoid": [
+      5.8,
+      6.2,
+      7.5,
+      8.2
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loamy_sand",
+      "loam"
+    ],
+    "tolerated_textures": [
+      "sandy_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "excessively"
+    ],
+    "salinity_tolerance_ece": 3.2,
+    "water_demand": "medium",
+    "base_yield_cv": 0.2,
+    "notes": "Requires friable sandy-loam soil for peg penetration and pod development.",
+    "source": "ICAR-DGR Junagadh",
+    "verification_status": "needs_agronomist_review"
+  },
+  "soybean": {
+    "key": "soybean",
+    "name": "Soybean",
+    "local_name": "Soya bean (\u0938\u094b\u092f\u093e\u092c\u0940\u0928)",
+    "group": "oilseeds",
+    "seasons": [
+      "kharif"
+    ],
+    "cycle_days": 95,
+    "temperature_trapezoid": [
+      18.0,
+      23.0,
+      32.0,
+      38.0
+    ],
+    "rainfall_trapezoid": [
+      550.0,
+      750.0,
+      1150.0,
+      1600.0
+    ],
+    "ph_trapezoid": [
+      6.0,
+      6.5,
+      7.5,
+      8.2
+    ],
+    "preferred_textures": [
+      "clay_loam",
+      "loam",
+      "silty_clay_loam",
+      "clay"
+    ],
+    "tolerated_textures": [
+      "sandy_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 4.5,
+    "water_demand": "medium",
+    "base_yield_cv": 0.19,
+    "notes": "Major rainfed kharif crop of Central Indian black cotton soils.",
+    "source": "ICAR-IISR Indore",
+    "verification_status": "needs_agronomist_review"
+  },
+  "sesame": {
+    "key": "sesame",
+    "name": "Sesame",
+    "local_name": "Til (\u0924\u093f\u0932)",
+    "group": "oilseeds",
+    "seasons": [
+      "kharif",
+      "zaid"
+    ],
+    "cycle_days": 85,
+    "temperature_trapezoid": [
+      18.0,
+      25.0,
+      35.0,
+      42.0
+    ],
+    "rainfall_trapezoid": [
+      350.0,
+      500.0,
+      850.0,
+      1200.0
+    ],
+    "ph_trapezoid": [
+      5.5,
+      6.2,
+      7.8,
+      8.2
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "loamy_sand",
+      "sandy_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "excessively"
+    ],
+    "salinity_tolerance_ece": 3.0,
+    "water_demand": "low",
+    "base_yield_cv": 0.22,
+    "notes": "Drought hardy oilseed; intolerant of waterlogging and heavy frost.",
+    "source": "ICAR-AICRP on Sesame and Niger",
+    "verification_status": "needs_agronomist_review"
+  },
+  "cotton": {
+    "key": "cotton",
+    "name": "Cotton",
+    "local_name": "Kapas (\u0915\u092a\u093e\u0938)",
+    "group": "fibre",
+    "seasons": [
+      "kharif"
+    ],
+    "cycle_days": 165,
+    "temperature_trapezoid": [
+      18.0,
+      25.0,
+      35.0,
+      42.0
+    ],
+    "rainfall_trapezoid": [
+      500.0,
+      750.0,
+      1250.0,
+      1800.0
+    ],
+    "ph_trapezoid": [
+      6.0,
+      6.5,
+      8.2,
+      8.7
+    ],
+    "preferred_textures": [
+      "deep_black_clay",
+      "clay_loam",
+      "loam",
+      "clay"
+    ],
+    "tolerated_textures": [
+      "sandy_clay_loam",
+      "sandy_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 7.7,
+    "water_demand": "medium",
+    "base_yield_cv": 0.2,
+    "notes": "Major commercial cash fibre crop; thrives in black soils (vertisols).",
+    "source": "ICAR-CICR Nagpur",
+    "verification_status": "needs_agronomist_review"
+  },
+  "sugarcane": {
+    "key": "sugarcane",
+    "name": "Sugarcane",
+    "local_name": "Ganna (\u0917\u0928\u094d\u0928\u093e)",
+    "group": "commercial",
+    "seasons": [
+      "annual"
+    ],
+    "cycle_days": 330,
+    "temperature_trapezoid": [
+      16.0,
+      24.0,
+      35.0,
+      40.0
+    ],
+    "rainfall_trapezoid": [
+      1000.0,
+      1500.0,
+      2500.0,
+      3500.0
+    ],
+    "ph_trapezoid": [
+      6.0,
+      6.5,
+      7.8,
+      8.4
+    ],
+    "preferred_textures": [
+      "loam",
+      "clay_loam",
+      "silt_loam",
+      "clay"
+    ],
+    "tolerated_textures": [
+      "sandy_clay_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 4.5,
+    "water_demand": "high",
+    "base_yield_cv": 0.14,
+    "notes": "Long duration heavy-water consumer; high biomass and sugar accumulation.",
+    "source": "ICAR-IISR Lucknow",
+    "verification_status": "needs_agronomist_review"
+  },
+  "potato": {
+    "key": "potato",
+    "name": "Potato",
+    "local_name": "Aloo (\u0906\u0932\u0942)",
+    "group": "vegetables",
+    "seasons": [
+      "rabi"
+    ],
+    "cycle_days": 90,
+    "temperature_trapezoid": [
+      8.0,
+      16.0,
+      22.0,
+      28.0
+    ],
+    "rainfall_trapezoid": [
+      300.0,
+      500.0,
+      750.0,
+      1100.0
+    ],
+    "ph_trapezoid": [
+      5.0,
+      5.5,
+      6.8,
+      7.8
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "silt_loam"
+    ],
+    "tolerated_textures": [
+      "loamy_sand"
+    ],
+    "preferred_drainage": [
+      "well",
+      "excessively"
+    ],
+    "salinity_tolerance_ece": 2.5,
+    "water_demand": "medium",
+    "base_yield_cv": 0.25,
+    "notes": "Cool season tuber; night temperature around 15-20\u00b0C critical for tuberization.",
+    "source": "ICAR-CPRI Shimla",
+    "verification_status": "needs_agronomist_review"
+  },
+  "tomato": {
+    "key": "tomato",
+    "name": "Tomato",
+    "local_name": "Tamatar (\u091f\u092e\u093e\u091f\u0930)",
+    "group": "vegetables",
+    "seasons": [
+      "kharif",
+      "rabi"
+    ],
+    "cycle_days": 110,
+    "temperature_trapezoid": [
+      12.0,
+      18.0,
+      28.0,
+      35.0
+    ],
+    "rainfall_trapezoid": [
+      400.0,
+      600.0,
+      950.0,
+      1400.0
+    ],
+    "ph_trapezoid": [
+      5.8,
+      6.2,
+      7.2,
+      8.0
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "silt_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 2.8,
+    "water_demand": "medium",
+    "base_yield_cv": 0.3,
+    "notes": "Sensitive to frost and waterlogging; prices highly volatile across seasons.",
+    "source": "ICAR-IIHR Bengaluru",
+    "verification_status": "needs_agronomist_review"
+  },
+  "onion": {
+    "key": "onion",
+    "name": "Onion",
+    "local_name": "Pyaz (\u092a\u094d\u092f\u093e\u091c)",
+    "group": "vegetables",
+    "seasons": [
+      "kharif",
+      "rabi"
+    ],
+    "cycle_days": 120,
+    "temperature_trapezoid": [
+      10.0,
+      16.0,
+      26.0,
+      34.0
+    ],
+    "rainfall_trapezoid": [
+      350.0,
+      550.0,
+      850.0,
+      1200.0
+    ],
+    "ph_trapezoid": [
+      5.8,
+      6.2,
+      7.5,
+      8.2
+    ],
+    "preferred_textures": [
+      "sandy_loam",
+      "loam",
+      "clay_loam"
+    ],
+    "tolerated_textures": [
+      "silt_loam"
+    ],
+    "preferred_drainage": [
+      "well",
+      "moderately_well"
+    ],
+    "salinity_tolerance_ece": 2.5,
+    "water_demand": "medium",
+    "base_yield_cv": 0.28,
+    "notes": "Shallow rooted bulb crop; highly sensitive to poor drainage and moisture stress.",
+    "source": "ICAR-DOGR Pune",
+    "verification_status": "needs_agronomist_review"
+  }
+}

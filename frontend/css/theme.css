@@ -1,0 +1,255 @@
+/* ==========================================================================
+   TerraTrend Earthy Design System Tokens — Single Source of Truth
+   Compliant with WCAG 2.2 AA / AAA contrast requirements.
+   ========================================================================== */
+
+:root {
+  /* Brand */
+  --herb: #6A8042;
+  --gleam: #FFE787;
+  --pearl: #FFFDDD;
+  --radiate: #ED7A13;
+  --moss: #1E3006;
+  --herb-deep: #566B33;
+  --radiate-deep: #B35500;
+  --water: #2F6F8F;
+  --clay-red: #B3382C;
+
+  /* Surfaces and text (light) */
+  --bg: #FFFDDD;
+  --bg-subtle: #FAF5C8;
+  --surface: #FFFFFF;
+  --text: #1E3006;
+  --text-muted: #4A5B2E;
+  --border: #D9D4A8;
+  --border-strong: #6A8042;          /* strong = inputs, outlines (>= 3:1) */
+
+  /* Legacy variable aliases pointing to single source of truth */
+  --bg-deep: var(--bg);
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg-subtle);
+  --bg-surface: var(--surface);
+  --bg-surface-elevated: var(--surface);
+  --bg-surface-hover: var(--bg-subtle);
+  --bg-glass: var(--surface);
+  --text-primary: var(--text);
+  --text-secondary: var(--text-muted);
+  --text-tertiary: var(--text-muted);
+  --text-inverse: var(--bg);
+  --border-subtle: var(--border);
+  --border-medium: var(--border-strong);
+  --border-active: var(--primary);
+  --border-focus: var(--focus);
+
+  /* Actions */
+  --primary: #ED7A13;
+  --primary-hover: #F58A2B;
+  --on-primary: #1E3006;
+  --secondary: #566B33;
+  --on-secondary: #FFFDDD;
+  --danger: #B3382C;
+  --on-danger: #FFFFFF;
+  --link: #B35500;
+  --focus: #B35500;
+
+  /* Status badges: bg + ink pairs (ink on bg >= 4.5:1) */
+  --good-bg: #E0EBCB;
+  --good-ink: #1E3006;
+  --moderate-bg: #FFE787;
+  --moderate-ink: #1E3006;
+  --poor-bg: #F6D5D0;
+  --poor-ink: #7A1F16;
+  --info-bg: #D9EAF2;
+  --info-ink: #12384A;
+
+  /* Data visualization (graphics need >= 3:1) */
+  --viz-water: #2F6F8F;
+  --viz-orange: #B35500;
+  --viz-green: #6A8042;
+  --viz-red: #B3382C;
+  --viz-ink: #1E3006;
+  --viz-seq-0: #FFFDDD;
+  --viz-seq-1: #D5E0B5;
+  --viz-seq-2: #9DB872;
+  --viz-seq-3: #6A8042;
+  --viz-seq-4: #1E3006;
+  --viz-div-neg: #2F6F8F;
+  --viz-div-mid: #FFFDDD;
+  --viz-div-pos: #B35500;
+
+  /* Shape, space, type, motion */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px rgb(30 48 6 / 0.08);
+  --shadow-md: 0 8px 24px rgb(30 48 6 / 0.10);
+  --shadow-lg: 0 16px 36px rgb(30 48 6 / 0.14);
+  --shadow-glow: 0 0 20px rgb(237 122 19 / 0.25);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Devanagari", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
+
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.55;
+
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur: 160ms;
+
+  color-scheme: light;
+}
+
+/* Dark: Moss-based. Explicitly chosen */
+:root[data-theme="dark"] {
+  --bg: #142004;
+  --bg-subtle: #192A05;
+  --surface: #1E3006;
+  --text: #FFFDDD;
+  --text-muted: #C8C9A8;
+  --border: #3A5420;
+  --border-strong: #9DB872;
+
+  --bg-deep: var(--bg);
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg-subtle);
+  --bg-surface: var(--surface);
+  --bg-surface-elevated: var(--surface);
+  --bg-surface-hover: var(--bg-subtle);
+  --bg-glass: var(--surface);
+  --text-primary: var(--text);
+  --text-secondary: var(--text-muted);
+  --text-tertiary: var(--text-muted);
+  --text-inverse: var(--bg);
+  --border-subtle: var(--border);
+  --border-medium: var(--border-strong);
+  --border-active: var(--primary);
+  --border-focus: var(--focus);
+
+  --primary: #ED7A13;
+  --primary-hover: #F58A2B;
+  --on-primary: #1E3006;
+  --secondary: #9DB872;
+  --on-secondary: #1E3006;
+  --danger: #F0877B;
+  --on-danger: #1E3006;
+  --link: #ED7A13;
+  --focus: #FFE787;
+
+  --good-bg: #2E4A17;
+  --good-ink: #FFFDDD;
+  --moderate-bg: #5C4A0A;
+  --moderate-ink: #FFE787;
+  --poor-bg: #5A1C14;
+  --poor-ink: #F0877B;
+  --info-bg: #173748;
+  --info-ink: #9FD0E8;
+
+  --viz-water: #6FB3D2;
+  --viz-orange: #ED7A13;
+  --viz-green: #9DB872;
+  --viz-red: #F0877B;
+  --viz-ink: #FFFDDD;
+  --viz-seq-0: #1E3006;
+  --viz-seq-1: #3F5A22;
+  --viz-seq-2: #6A8042;
+  --viz-seq-3: #9DB872;
+  --viz-seq-4: #FFFDDD;
+  --viz-div-neg: #6FB3D2;
+  --viz-div-mid: #1E3006;
+  --viz-div-pos: #ED7A13;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 16px 36px rgb(0 0 0 / 0.55);
+  --shadow-glow: 0 0 25px rgb(237 122 19 / 0.35);
+
+  color-scheme: dark;
+}
+
+/* Dark: When system prefers dark and user has not chosen light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #142004;
+    --bg-subtle: #192A05;
+    --surface: #1E3006;
+    --text: #FFFDDD;
+    --text-muted: #C8C9A8;
+    --border: #3A5420;
+    --border-strong: #9DB872;
+
+    --bg-deep: var(--bg);
+    --bg-primary: var(--bg);
+    --bg-secondary: var(--bg-subtle);
+    --bg-surface: var(--surface);
+    --bg-surface-elevated: var(--surface);
+    --bg-surface-hover: var(--bg-subtle);
+    --bg-glass: var(--surface);
+    --text-primary: var(--text);
+    --text-secondary: var(--text-muted);
+    --text-tertiary: var(--text-muted);
+    --text-inverse: var(--bg);
+    --border-subtle: var(--border);
+    --border-medium: var(--border-strong);
+    --border-active: var(--primary);
+    --border-focus: var(--focus);
+
+    --primary: #ED7A13;
+    --primary-hover: #F58A2B;
+    --on-primary: #1E3006;
+    --secondary: #9DB872;
+    --on-secondary: #1E3006;
+    --danger: #F0877B;
+    --on-danger: #1E3006;
+    --link: #ED7A13;
+    --focus: #FFE787;
+
+    --good-bg: #2E4A17;
+    --good-ink: #FFFDDD;
+    --moderate-bg: #5C4A0A;
+    --moderate-ink: #FFE787;
+    --poor-bg: #5A1C14;
+    --poor-ink: #F0877B;
+    --info-bg: #173748;
+    --info-ink: #9FD0E8;
+
+    --viz-water: #6FB3D2;
+    --viz-orange: #ED7A13;
+    --viz-green: #9DB872;
+    --viz-red: #F0877B;
+    --viz-ink: #FFFDDD;
+    --viz-seq-0: #1E3006;
+    --viz-seq-1: #3F5A22;
+    --viz-seq-2: #6A8042;
+    --viz-seq-3: #9DB872;
+    --viz-seq-4: #FFFDDD;
+    --viz-div-neg: #6FB3D2;
+    --viz-div-mid: #1E3006;
+    --viz-div-pos: #ED7A13;
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 8px 24px rgb(0 0 0 / 0.45);
+    --shadow-lg: 0 16px 36px rgb(0 0 0 / 0.55);
+    --shadow-glow: 0 0 25px rgb(237 122 19 / 0.35);
+
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#142004">
+  <title>TerraTrend — Scientific Methodology & Economic Framework</title>
+  <meta name="description" content="Technical documentation of NASA Earth observation assimilation, Hamed-Rao Modified Mann-Kendall trend detection, piecewise-linear suitability scoring, state-by-state topography calibration, and official CACP agricultural economics.">
+  
+  <!-- Custom Master Stylesheet -->
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <!-- Theme initial script before paint -->
+  <script src="/static/js/theme.js"></script>
+  
+  <!-- KaTeX for crisp mathematical typography -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});">
+  </script>
+</head>
+<body>
+
+  <!-- Minimalist Fixed Header Navigation -->
+  <header class="nav-header">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="nav-title">TerraTrend</span>
+        <span class="nav-badge">Documentation</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/decision" class="nav-link">Decision Engine</a></li>
+          <li><a href="/methodology" class="nav-link active">Methodology & Science</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle theme">
+          <span>🌓</span> <span class="theme-label">Auto</span>
+        </button>
+        <div class="live-telemetry-pill">
+          <span class="pulse-dot"></span>
+          <span>Open Science & Provenance</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Editorial Article Container -->
+  <main class="page-wrapper">
+    <div class="methodology-container">
+
+      <!-- Editorial Hero Header -->
+      <section class="methodology-hero">
+        <div class="hero-eyebrow">
+          <span>NASA Space Apps Challenge 2026</span>
+          <div class="hero-eyebrow-dash"></div>
+          <span>Scientific & Economic Whitepaper</span>
+        </div>
+
+        <h1 class="heading-display" style="font-size: clamp(2.2rem, 4vw, 3.5rem); margin: 16px 0 20px 0;">
+          Orbital Earth Intelligence Meets Sovereign Farm Economics.
+        </h1>
+
+        <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 840px; line-height: 1.75;">
+          TerraTrend synthesizes 15 to 20 years of continuous NASA satellite soundings and reanalysis cubes with the official cost-accounting standards of the Commission for Agricultural Costs and Prices (CACP), Government of India. This document details the underlying physical data sources, regional topography calibrations, mathematical formulas, and statistical gates powering the platform.
+        </p>
+      </section>
+
+      <!-- Section 1: Ingested Satellite Constellation -->
+      <section class="methodology-section">
+        <h2>
+          <span class="badge-sensor">01</span>
+          NASA Satellite Constellation & Distributed Active Archive Centers (DAACs)
+        </h2>
+
+        <p>
+          Agricultural land suitability cannot rely on a single sensor or regional weather station. TerraTrend ingests and co-registers seven independent NASA and ORNL DAAC remote sensing products over a uniform 0.25° × 0.25° grid covering India's sovereign territory:
+        </p>
+
+        <div class="editorial-table-wrapper">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>Mission / Instrument</th>
+                <th>Product Identifier</th>
+                <th>Physical Resolution</th>
+                <th>Archive DAAC</th>
+                <th>Measured Parameter & Agronomic Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>NASA GLDAS 2.1 (Noah LSM)</strong></td>
+                <td><code>GLDAS_NOAH025_M_2.1</code></td>
+                <td>0.25° × 0.25° (~27 km)</td>
+                <td>GES DISC (Goddard Earth Sciences)</td>
+                <td>Surface air temperature ($K$), precipitation flux ($kg/m^2/s$), 3-layer soil moisture (0–10cm, 10–40cm, 40–100cm), and evapotranspiration.</td>
+              </tr>
+              <tr>
+                <td><strong>NASA MERRA-2 Reanalysis</strong></td>
+                <td><code>M2TMNXFLX / M2TMNXSLV</code></td>
+                <td>0.5° × 0.625° regridded</td>
+                <td>GES DISC DAAC</td>
+                <td>Atmospheric assimilation reanalysis for 2-meter air temperature (<code>T2M</code>) and dimensionless root-zone wetness (<code>GWETROOT</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>GPM IMERG (Final Run V07)</strong></td>
+                <td><code>GPM_3IMERGM_07</code></td>
+                <td>0.1° × 0.1° regridded</td>
+                <td>GES DISC DAAC</td>
+                <td>High-resolution orbital microwave radar precipitation used to independently validate summer monsoon rainfall totals.</td>
+              </tr>
+              <tr>
+                <td><strong>MODIS Terra & Aqua</strong></td>
+                <td><code>MOD13C2 V061 (CMG)</code></td>
+                <td>0.05° CMG regridded</td>
+                <td>LP DAAC (Land Processes)</td>
+                <td>Normalized Difference Vegetation Index (NDVI) and Enhanced Vegetation Index (EVI) providing canopy vigor confirmation.</td>
+              </tr>
+              <tr>
+                <td><strong>AIRS Sounder (Aqua)</strong></td>
+                <td><code>AIRS3STM_7.0</code></td>
+                <td>1.0° × 1.0° regridded</td>
+                <td>GES DISC DAAC</td>
+                <td>Ascending (daytime) and descending (nighttime) surface air temperature and relative humidity sounding profiles.</td>
+              </tr>
+              <tr>
+                <td><strong>Aura OMI Sounder</strong></td>
+                <td><code>OMNO2d V003</code></td>
+                <td>0.25° × 0.25°</td>
+                <td>GES DISC DAAC</td>
+                <td>Tropospheric column $NO_2$ and total column ozone ($O_3$) providing regional industrial emission and atmospheric context.</td>
+              </tr>
+              <tr>
+                <td><strong>HWSD v1.2 / ICAR-NBSS&LUP</strong></td>
+                <td><code>HWSD_RASTER_1KM</code></td>
+                <td>30 arc-sec regridded</td>
+                <td>ORNL DAAC / FAO / ICAR</td>
+                <td>Topsoil/subsoil pH, organic carbon (%), cation exchange capacity (CEC), sand/clay/silt percentages, salinity, and drainage.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: Regional Topography & Agro-Climatic Calibration -->
+      <section class="methodology-section">
+        <h2>
+          <span class="badge-sensor">02</span>
+          State-by-State Topography & Agro-Climatic Calibration
+        </h2>
+
+        <p>
+          India encompasses diverse agro-climatic zones ranging from the arid Thar desert of Rajasthan to the perhumid tropical coast of Kerala and the fertile alluvial plains of the Indo-Gangetic basin. To reflect physical reality, TerraTrend calibrates every 0.25° grid cell against official <strong>India Meteorological Department (IMD) 50-year rainfall normals</strong> and <strong>ICAR-NBSS&LUP soil agro-ecology</strong>:
+        </p>
+
+        <div class="editorial-table-wrapper">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>Geographic Region</th>
+                <th>Typical States</th>
+                <th>Rainfall Regime (mm/yr)</th>
+                <th>Dominant Soil Order & Texture</th>
+                <th>Agronomic Dynamics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Arid North-West</strong></td>
+                <td>Rajasthan, North Gujarat</td>
+                <td>350 – 550 mm</td>
+                <td>Aridisols (Loamy sand / Sand, pH 8.1–8.5, OC &lt; 0.4%)</td>
+                <td>Extreme evaporation, high soil alkalinity, moisture-deficit gating; requires drought-tolerant crops (Bajra, Guar, Mustard).</td>
+              </tr>
+              <tr>
+                <td><strong>Indo-Gangetic Alluvium</strong></td>
+                <td>Punjab, Haryana, UP, Bihar</td>
+                <td>600 – 1,200 mm</td>
+                <td>Inceptisols / Entisols (Loam / Silt loam, pH 7.4–8.0, OC 0.6–0.8%)</td>
+                <td>Deep fertile alluvial deposits with high capillary water storage; ideal for intensive Wheat, Paddy, and Sugarcane rotations.</td>
+              </tr>
+              <tr>
+                <td><strong>Deccan Plateau (Black Cotton)</strong></td>
+                <td>Madhya Pradesh, Maharashtra, Karnataka</td>
+                <td>900 – 1,250 mm</td>
+                <td>Vertisols (Heavy clay, pH 7.4–7.8, CEC 32–42 cmol/kg)</td>
+                <td>High swelling clay content with exceptional moisture-retention; susceptible to waterlogging in monsoon; prime for Soybean and Cotton.</td>
+              </tr>
+              <tr>
+                <td><strong>Humid Subtropical & East Coast</strong></td>
+                <td>Assam, Meghalaya, West Bengal, Odisha</td>
+                <td>1,600 – 3,200 mm</td>
+                <td>Alfisols / Ultisols (Clay loam, acidic pH 5.0–6.2, OC 1.2–2.2%)</td>
+                <td>Heavy monsoon precipitation, potential soil leaching; ideal for high-moisture crops (Tea, Paddy, Jute) with lime amendment protocols.</td>
+              </tr>
+              <tr>
+                <td><strong>Western Ghats & Coastal Plain</strong></td>
+                <td>Kerala, Coastal Karnataka, Goa</td>
+                <td>2,800 – 3,400 mm</td>
+                <td>Oxisols / Laterites (Sandy clay loam, acidic pH 5.2–5.6, OC &gt; 1.8%)</td>
+                <td>High rainfall leaches basic cations; elevated iron/aluminum oxides; prime for Coconut, Spices, and Rubber.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Time Series Statistics & Hamed-Rao Mann-Kendall -->
+      <section class="methodology-section">
+        <h2>
+          <span class="badge-sensor">03</span>
+          Statistical Trend Detection: Hamed-Rao Modified Mann-Kendall
+        </h2>
+
+        <p>
+          In classical climate analysis, standard linear regression (OLS) is vulnerable to extreme cloud outliers and sensor recalibrations. Standard Mann-Kendall tests assume statistically independent observations. In real-world Indian meteorological records, positive serial autocorrelation (red noise) inflates the test statistic, causing false-positive trend detections in up to 40% of stationary series.
+        </p>
+
+        <p>
+          TerraTrend implements the <strong>Hamed and Rao (1998) Modified Mann-Kendall test</strong>, which corrects the variance of the Mann-Kendall score $S$ across all statistically significant autocorrelation lags:
+        </p>
+
+        <div class="math-card">
+          <div class="math-formula">
+            $$S = \sum_{k=1}^{n-1} \sum_{j=k+1}^n \text{sgn}(x_j - x_k)$$
+          </div>
+          <div class="math-desc">
+            Where $x_j$ and $x_k$ are annual time-series observations in years $j$ and $k$, and $\text{sgn}(\theta)$ evaluates to $+1, 0, \text{ or } -1$.
+          </div>
+        </div>
+
+        <p>
+          The corrected variance $\text{Var}^*(S)$ accounts for the empirical autocorrelation structure of the rank-transformed data:
+        </p>
+
+        <div class="math-card">
+          <div class="math-formula">
+            $$\text{Var}^*(S) = \text{Var}(S) \times \left[ 1 + \frac{2}{n(n-1)(n-2)} \sum_{i=1}^{n-1} (n-i)(n-i-1)(n-i-2) \rho_S(i) \right]$$
+          </div>
+          <div class="math-desc">
+            Here, $\rho_S(i)$ denotes the rank autocorrelation coefficient at lag $i$. Only lags where $|\rho_S(i)| > \frac{1.96}{\sqrt{n}}$ are included, preventing spurious high-frequency noise from distorting the variance scaling factor.
+          </div>
+        </div>
+
+        <h3>Theil-Sen Robust Median Slope Estimator</h3>
+        <p>
+          The rate of environmental change per annum is computed using the non-parametric Theil-Sen estimator:
+        </p>
+
+        <div class="math-card">
+          <div class="math-formula">
+            $$\beta = \text{median}\left\{ \frac{x_j - x_k}{j - k} : j > k \right\}$$
+          </div>
+          <div class="math-desc">
+            The Theil-Sen slope $\beta$ possesses an asymptotic breakdown point of 29.3%, ensuring that spurious outlier years (e.g. extreme unseasonal cyclones or sensor gaps) do not distort the underlying multi-decadal trend trajectory.
+          </div>
+        </div>
+
+        <h3>Strict Statistical Significance Gate ($p < 0.05$)</h3>
+        <p>
+          TerraTrend enforces a strict conservative threshold: unless the Hamed-Rao two-tailed probability $p < 0.05$, the system classifies the metric as <strong>STABLE</strong>. Trend-based adaptation advice never recommends changing crop rotations based on unconfirmed short-term noise.
+        </p>
+      </section>
+
+      <!-- Section 4: 5-Factor Agronomic Scoring & Weakest-Link Principle -->
+      <section class="methodology-section">
+        <h2>
+          <span class="badge-sensor">04</span>
+          5-Factor Agronomic Suitability & The Weakest-Link Principle
+        </h2>
+
+        <p>
+          Traditional land evaluation platforms frequently use binary thresholds (e.g. "Wheat requires &lt;25°C; 25.1°C returns 0%"). This introduces artificial decision cliffs. TerraTrend evaluates land through continuous 4-knot piecewise-linear trapezoids across five agronomic foundations:
+        </p>
+
+        <div class="math-card">
+          <div class="math-formula">
+            $$\text{Score}(x) = 
+            \begin{cases} 
+              0 & x < S_{min} \\
+              \frac{x - S_{min}}{O_{min} - S_{min}} \times 100 & S_{min} \le x < O_{min} \\
+              100 & O_{min} \le x \le O_{max} \\
+              \frac{S_{max} - x}{S_{max} - O_{max}} \times 100 & O_{max} < x \le S_{max} \\
+              0 & x > S_{max}
+            \end{cases}$$
+          </div>
+          <div class="math-desc">
+            Trapezoidal scoring function with lower survival bound ($S_{min}$), optimal lower bound ($O_{min}$), optimal upper bound ($O_{max}$), and upper lethal bound ($S_{max}$).
+          </div>
+        </div>
+
+        <h3>The Five Foundations</h3>
+        <ul>
+          <li><strong>1. Temperature (Weight 20%):</strong> Evaluates growing-season heat accumulation, frost vulnerability, and extreme thermal stress.</li>
+          <li><strong>2. Moisture & Water (Weight 25%):</strong> Evaluates annual rainfall volume against crop requirement, root-zone wetness (0–100cm), and irrigation access.</li>
+          <li><strong>3. Soil pH (Weight 15%):</strong> Evaluates topsoil (0–30cm) and subsoil (30–100cm) active acidity/alkalinity; flags nutrient lockup when pH &lt; 5.5 or sodicity when pH &gt; 8.5.</li>
+          <li><strong>4. Soil Texture & Quality (Weight 25%):</strong> Evaluates organic carbon (%), cation exchange capacity (CEC), USDA textural class, drainage permeability, and salinity (ECe).</li>
+          <li><strong>5. Macro Climate & Stability (Weight 15%):</strong> Evaluates rainfall interannual coefficient of variation (CV), length of growing period (LGP in months), and drought frequency.</li>
+        </ul>
+
+        <h3>Liebig's Law of the Minimum (Poor Factor Capping)</h3>
+        <p>
+          Crop physiology is limited by the scarcest essential resource, not by the total sum of available resources. TerraTrend enforces a strict rule: <strong>If any single factor is rated POOR (&lt; 70), the composite score cannot exceed 69.0</strong>, and the limiting factors are explicitly named on the report card.
+        </p>
+      </section>
+
+      <!-- Section 5: CACP Agricultural Cost-of-Cultivation Economics -->
+      <section class="methodology-section">
+        <h2>
+          <span class="badge-sensor">05</span>
+          Official CACP Agricultural Economics Framework
+        </h2>
+
+        <p>
+          TerraTrend's economic engine adheres strictly to the cost concepts defined by the <strong>Commission for Agricultural Costs and Prices (CACP)</strong>, Ministry of Agriculture & Farmers Welfare:
+        </p>
+
+        <div class="editorial-table-wrapper">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>CACP Cost Concept</th>
+                <th>Constituent Expenditures</th>
+                <th>Institutional Significance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cost $A_2$ (Direct Paid-Out)</strong></td>
+                <td>Purchased seed, chemical fertilizers, manure, plant protection chemicals, diesel/electricity, tractor hire, irrigation cess, hired human labour, animal draft power.</td>
+                <td>Actual out-of-pocket working capital required by the cultivator before planting season.</td>
+              </tr>
+              <tr>
+                <td><strong>Cost $A_2 + FL$</strong></td>
+                <td>Cost $A_2$ plus the imputed economic value of unpaid family labour based on statutory agricultural wage rates.</td>
+                <td>The statutory floor benchmark utilized by the Government of India for setting Minimum Support Prices (MSP = $1.5 \times (A_2 + FL)$).</td>
+              </tr>
+              <tr>
+                <td><strong>Cost $C_2$ (Comprehensive)</strong></td>
+                <td>Cost $A_2 + FL$ plus rental value of owned land, rent paid for leased land, interest on owned fixed capital, and a 10% managerial allowance.</td>
+                <td>The complete economic cost of production recommended by the National Commission on Farmers (Dr. M.S. Swaminathan Committee).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Revenue, Break-Even & Margin of Safety</h3>
+        <p>
+          For farm area $A$ (ha), expected yield $Y$ (q/ha), realized price $P$ (₹/q), and ICAR post-harvest loss fraction $\lambda_{loss}$:
+        </p>
+
+        <div class="math-card">
+          <div class="math-formula">
+            $$\text{Gross Revenue} = Y \times A \times P \times (1 - \lambda_{\text{loss}})$$
+          </div>
+          <div class="math-desc">
+            Post-harvest loss ($\lambda_{loss}$) accounts for field handling, thresher loss, storage degradation, and transit spillage (typically 4.5% to 8.0%).
+          </div>
+        </div>
+
+        <div class="math-card">
+          <div class="math-formula">
+            $$\text{Break-Even Price } (P_{be}) = \frac{\text{Total Cost } (C_2)}{Y \times A \times (1 - \lambda_{\text{loss}})}, \quad \text{Margin of Safety} = \frac{P - P_{be}}{P} \times 100\%$$
+          </div>
+          <div class="math-desc">
+            Margin of Safety measures the percentage cushion against price collapses before the farmer enters net financial loss under comprehensive $C_2$ accounting.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Monte Carlo Downside Risk Modeling -->
+      <section class="methodology-section">
+        <h2>
+          <span class="badge-sensor">06</span>
+          5,000-Draw Monte Carlo Downside Risk Simulation
+        </h2>
+
+        <p>
+          Farm financial outcomes in India are subject to compound monsoon shocks and harvest price volatility. TerraTrend runs an automated 5,000-draw lognormal Monte Carlo risk simulation:
+        </p>
+
+        <ul>
+          <li><strong>Yield Shocks:</strong> Sampled from a lognormal distribution parameterized by state-level historical yield standard deviations from the Directorate of Economics & Statistics (DES).</li>
+          <li><strong>Price Volatility:</strong> Modeled using Agmarknet wholesale mandi price variances, bounded below by the statutory Minimum Support Price (MSP) floor.</li>
+          <li><strong>Percentile Distribution:</strong> Reports P10 (conservative downside / drought year), P50 (median baseline), and P90 (favorable monsoon upside) net returns.</li>
+          <li><strong>Probability of Loss:</strong> The empirical percentage of simulated iterations where Gross Revenue fails to cover total $C_2$ cost of cultivation.</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Master Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        <strong style="color:var(--text-primary)">TerraTrend</strong> — Geospatial Agricultural Intelligence for India. Built for the 2026 NASA Space Apps Challenge.
+      </div>
+      <div class="footer-badge-row">
+        <span class="footer-badge">Hamed-Rao (1998)</span>
+        <span class="footer-badge">Theil-Sen Estimator</span>
+        <span class="footer-badge">CACP Cost Standards</span>
+        <span class="footer-badge">NASA GES DISC</span>
+        <span class="footer-badge">NASA LP DAAC</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

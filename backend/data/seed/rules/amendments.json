@@ -1,0 +1,162 @@
+[
+  {
+    "factor": "soil_ph",
+    "issue": "Strongly acidic soil (pH < 5.5)",
+    "condition": {
+      "field": "soil_ph_top",
+      "op": "<",
+      "val": 5.5
+    },
+    "actions": [
+      "Apply agricultural lime (calcium carbonate) or dolomite broadcast and thoroughly incorporate into the top 15 cm before planting.",
+      "Incorporate well-decomposed farmyard manure (FYM) or compost to buffer soil acidity and enhance phosphorus availability.",
+      "Band apply phosphorus fertilizers (rock phosphate or SSP) rather than broadcasting to reduce soil P fixation.",
+      "Select acid-tolerant crop varieties and consider tea, pineapple, or pulses where acidity is persistent."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments. Never apply unmeasured lime doses."
+  },
+  {
+    "factor": "soil_ph",
+    "issue": "Alkaline / calcareous soil (pH > 8.0)",
+    "condition": {
+      "field": "soil_ph_top",
+      "op": ">",
+      "val": 8.0
+    },
+    "actions": [
+      "Apply agricultural gypsum (calcium sulphate) or elemental sulphur to displace exchangeable sodium and lower rhizosphere pH.",
+      "Incorporate green manuring crops (such as Dhaincha / Sesbania aculeata) during pre-monsoon showers.",
+      "Use acidifying nitrogenous fertilizers like ammonium sulphate in place of urea.",
+      "Apply zinc sulphate and iron chelates foliar or soil-banded as micronutrient availability is restricted at high pH."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "soil_quality",
+    "issue": "Sodic soil condition (ESP > 15%)",
+    "condition": {
+      "field": "soil_sodicity",
+      "op": ">",
+      "val": 15.0
+    },
+    "actions": [
+      "Apply mined gypsum based on gypsum requirement (GR) test to replace adsorbed sodium ions with calcium.",
+      "Provide adequate leaching with non-saline irrigation water and ensure functional field drainage outlets.",
+      "Incorporate deep green manures (Dhaincha) and ensure continuous vegetative cover to prevent sodium crusting.",
+      "Adopt sodicity-tolerant crops such as barley, karnal grass, or salt-tolerant rice varieties (e.g. CSR-36, CSR-43)."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "soil_quality",
+    "issue": "Saline soil condition (ECe > 4.0 dS/m)",
+    "condition": {
+      "field": "soil_salinity",
+      "op": ">",
+      "val": 4.0
+    },
+    "actions": [
+      "Leach soluble salts below root zone by ponding fresh irrigation water and maintaining sub-surface drainage.",
+      "Construct field bunds to harvest monsoon rainwater for in-situ salt washing and flushing.",
+      "Adopt salt-tolerant crops like barley, cotton, sugarbeet, mustard, and sorghum.",
+      "Use drip irrigation with frequent light irrigations to keep salts pushed to the wetting perimeter."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "soil_quality",
+    "issue": "Low soil organic carbon (OC < 0.5%)",
+    "condition": {
+      "field": "soil_organic_carbon",
+      "op": "<",
+      "val": 0.5
+    },
+    "actions": [
+      "Apply 10-15 tonnes/ha of well-rotted farmyard manure (FYM), compost, or vermicompost prior to seedbed preparation.",
+      "Practice green manuring by incorporating Sesbania (Dhaincha) or Sunnhemp (Crotalaria juncea) at 45-50 days growth.",
+      "Adopt conservation agriculture: retain 30% or more crop residues on the surface and avoid stubble burning.",
+      "Include leguminous cover crops in crop rotation cycles to restore soil carbon and biological activity."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "soil_quality",
+    "issue": "Coarse sandy texture with low water and nutrient retention",
+    "condition": {
+      "field": "soil_sand",
+      "op": ">",
+      "val": 70.0
+    },
+    "actions": [
+      "Incorporate bulky organic manures, pressmud, or biochar to build up soil structure and water-holding capacity.",
+      "Apply organic mulches (straw, dry leaves) to suppress surface soil evaporation and lower soil temperature.",
+      "Install drip irrigation with fertigation to supply nutrients in small, frequent split doses and prevent leaching losses.",
+      "Choose drought-hardy and tap-rooted crops such as pearl millet, castor, groundnut, and cluster bean."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "soil_quality",
+    "issue": "Heavy clay with poor internal drainage or compaction",
+    "condition": {
+      "field": "soil_clay",
+      "op": ">",
+      "val": 50.0
+    },
+    "actions": [
+      "Construct broad bed and furrow (BBF) systems or raised beds to prevent root-zone waterlogging during intense rains.",
+      "Provide field periphery surface drainage channels to evacuate excess runoff quickly.",
+      "Avoid tillage operations when soil is too wet to prevent severe subsoil compaction and hardpan development.",
+      "Apply gypsum or organic amendments to promote flocculation and enhance water infiltration."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "moisture",
+    "issue": "Low moisture score or severe root-zone water deficit",
+    "condition": {
+      "field": "moisture_score",
+      "op": "<",
+      "val": 40.0
+    },
+    "actions": [
+      "Deploy micro-irrigation systems (drip or micro-sprinklers) saving 30-50% water compared to flood irrigation.",
+      "Construct farm ponds (khet talab) or check dams for on-farm rainwater harvesting and life-saving irrigation.",
+      "Adopt residue mulching (paddy straw, sugarcane trash) to reduce soil moisture evaporation by up to 35%.",
+      "Switch to low-water-demand millets (bajra, ragi, jowar) or short-duration pulses (moong, cowpea)."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "temperature",
+    "issue": "Elevated thermal stress during crop cycle",
+    "condition": {
+      "field": "temperature_score",
+      "op": "<",
+      "val": 40.0
+    },
+    "actions": [
+      "Shift planting windows: advance rabi sowing to avoid terminal heat, or adjust kharif sowing with monsoon onset.",
+      "Plant heat-tolerant and early-maturing cultivars recommended by ICAR / State Agricultural Universities.",
+      "Apply light protective irrigation during flowering and grain-filling stages to cool down the microclimate canopy.",
+      "Maintain tree shelterbelts or agroforestry windbreaks to temper scorching desiccating winds."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  },
+  {
+    "factor": "climate",
+    "issue": "High interannual rainfall variability or erratic precipitation",
+    "condition": {
+      "field": "rainfall_cv",
+      "op": ">",
+      "val": 0.3
+    },
+    "actions": [
+      "Establish contingency cropping plans (alternate early-maturing crops if monsoon onset is delayed by 2-4 weeks).",
+      "Practice intercropping (e.g. pigeon pea + soybean, maize + cowpea) to distribute climatic risks.",
+      "Enroll in Pradhan Mantri Fasal Bima Yojana (PMFBY) to mitigate localized yield loss risks.",
+      "Adopt in-situ moisture conservation: contour bunding, compartmental bunding, and ridge-furrow planting."
+    ],
+    "note": "Confirm with a local soil test and an agronomist before applying amendments."
+  }
+]

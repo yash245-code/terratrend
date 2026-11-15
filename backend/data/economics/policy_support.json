@@ -1,0 +1,67 @@
+{
+  "pmfby": {
+    "scheme_name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "farmer_premium_rates": {
+      "kharif_food_and_oilseeds_pct": 2.0,
+      "rabi_food_and_oilseeds_pct": 1.5,
+      "annual_commercial_and_horticultural_pct": 5.0
+    },
+    "sum_insured_note": "Sum insured is equal to Scale of Finance (SOF) fixed by District Level Technical Committee (DLTC).",
+    "subsidy_sharing": "Premium above farmer share is shared 50:50 by Central and State Governments (90:10 in North Eastern States).",
+    "coverage": [
+      "Prevented sowing / planting risk",
+      "Standing crop (sowing to harvesting)",
+      "Post-harvest losses (up to 14 days)",
+      "Localized calamities (cyclone, hail, landslide)"
+    ],
+    "as_of": "2024-06",
+    "source": "Ministry of Agriculture & Farmers Welfare Operational Guidelines",
+    "source_url": "https://pmfby.gov.in/",
+    "verify_before_use": true
+  },
+  "kcc": {
+    "scheme_name": "Kisan Credit Card (KCC) & Modified Interest Subvention Scheme (MISS)",
+    "headline_interest_rate_pct": 7.0,
+    "prompt_repayment_incentive_pct": 3.0,
+    "effective_interest_rate_pct": 4.0,
+    "collateral_free_limit_inr": 160000,
+    "max_subvented_loan_inr": 300000,
+    "notes": "Short-term crop production credit up to Rs 3 lakh available at 7% p.a.; with 3% prompt repayment incentive, the effective rate is 4% p.a.",
+    "as_of": "2024-06",
+    "source": "RBI / NABARD Guidelines",
+    "source_url": "https://www.nabard.org/",
+    "verify_before_use": true
+  },
+  "pm_kisan": {
+    "scheme_name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+    "annual_benefit_inr": 6000,
+    "installments_count": 3,
+    "installment_amount_inr": 2000,
+    "notes": "Direct benefit transfer of Rs 6,000 per year in three 4-monthly installments of Rs 2,000 each to all eligible landholder farmer families.",
+    "as_of": "2024-06",
+    "source": "Ministry of Agriculture & Farmers Welfare",
+    "source_url": "https://pmkisan.gov.in/",
+    "verify_before_use": true
+  },
+  "msp_procurement": {
+    "scheme_name": "Price Support Scheme (PSS) & Decentralized Procurement (DCP)",
+    "paddy_wheat_mechanism": "FCI and State Agencies procure paddy and wheat at MSP under Decentralized Procurement Scheme (DCP).",
+    "pulses_oilseeds_mechanism": "NAFED and NCCF procure pulses and oilseeds under Price Support Scheme (PSS) when market prices fall below MSP.",
+    "cotton_mechanism": "Cotton Corporation of India (CCI) procures seed cotton (kapas) when prices dip below MSP.",
+    "sugarcane_mechanism": "Sugar mills are legally mandated to pay Fair & Remunerative Price (FRP) fixed under Sugarcane (Control) Order 1966.",
+    "as_of": "2024-06",
+    "source": "DFPD / DA&FW Procurement Policy",
+    "source_url": "https://dfpd.gov.in/",
+    "verify_before_use": true
+  },
+  "input_subsidies": {
+    "urea_statutory_mrp_inr_per_45kg_bag": 242.0,
+    "fertilizer_subsidy_note": "Urea MRP is fixed statutorily; P&K fertilizers are subsidized under Nutrient Based Subsidy (NBS) scheme by Department of Fertilizers.",
+    "micro_irrigation_pmksy": "Per Drop More Crop scheme provides 55% subsidy for small and marginal farmers, and 45% for other farmers for drip and sprinkler systems.",
+    "solar_pump_pmkusum": "PM-KUSUM provides 60% subsidy (30% Centre + 30% State) for standalone solar agriculture pumps.",
+    "as_of": "2024-06",
+    "source": "Department of Fertilizers / Ministry of Jal Shakti / MNRE",
+    "source_url": "https://www.fert.nic.in/",
+    "verify_before_use": true
+  }
+}

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#142004">
+  <title>TerraTrend — Decision Engine (Land Suitability & Crop Economics)</title>
+  <meta name="description" content="Geospatial agricultural decision-support engine for India. Synthesizing multi-decadal NASA Earth observation time series and official CACP economics.">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <!-- Custom Master Stylesheet -->
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <!-- Theme initial script before paint -->
+  <script src="/static/js/theme.js"></script>
+</head>
+<body>
+
+  <!-- Minimalist Fixed Header Navigation -->
+  <header class="nav-header">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="nav-title">TerraTrend</span>
+        <span class="nav-badge">India 2026</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/decision" class="nav-link active">Decision Engine</a></li>
+          <li><a href="/methodology" class="nav-link">Methodology & Science</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle theme">
+          <span>🌓</span> <span class="theme-label">Auto</span>
+        </button>
+        <div class="live-telemetry-pill" id="systemHealthPill">
+          <span class="pulse-dot"></span>
+          <span>NASA Telemetry Active</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Wrapper -->
+  <main class="page-wrapper">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-eyebrow">
+        <span>NASA Space Apps Challenge 2026</span>
+        <div class="hero-eyebrow-dash"></div>
+        <span>Agricultural Decision Engine</span>
+      </div>
+
+      <h1 class="heading-display hero-title">
+        Orbital Earth Intelligence for Indian Agriculture.
+      </h1>
+
+      <p class="hero-subtitle">
+        Synthesizing 20 years of NASA satellite observations, reanalysis models, and official Government of India (CACP) economics into definitive land report cards and crop profitability forecasts.
+      </p>
+
+      <!-- Geocoder & Location Search -->
+      <div class="search-bar-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Enter any Indian district, tehsil, or coordinates (e.g., Nagpur, Akola, Ludhiana)..."
+        />
+        <button type="button" class="btn btn-primary btn-sm" id="btnSearch">Locate</button>
+      </div>
+
+      <!-- Quick Location Presets -->
+      <div class="quick-loc-pills">
+        <span class="quick-loc-label">Try Region:</span>
+        <div id="presetPills" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+      </div>
+    </section>
+
+    <!-- Workspace: 2-Column Asymmetric Interactive Layout -->
+    <section class="grid-workspace section-spacing">
+      
+      <!-- Left Panel: Geographic Map & Farm Parameters -->
+      <aside class="workspace-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Plot & Farm Parameters</span>
+          </div>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-tertiary)">Survey of India Grid</span>
+        </div>
+
+        <!-- Interactive Map Frame -->
+        <div class="map-frame">
+          <div id="map"></div>
+          <div class="map-coords-badge" id="mapCoordsBadge">21.1458°N, 79.0882°E</div>
+        </div>
+
+        <!-- Form Controls -->
+        <div class="form-group">
+          <label class="form-label">Selected Crop Focus</label>
+          <select id="cropSelect" class="form-select"></select>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">Crop Season</label>
+            <select id="seasonSelect" class="form-select">
+              <option value="annual" selected>Full Year (Annual)</option>
+              <option value="kharif">Kharif (Monsoon)</option>
+              <option value="rabi">Rabi (Winter)</option>
+              <option value="zaid">Zaid (Summer)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Farm Size</label>
+            <div style="display:flex; gap:6px;">
+              <input type="number" id="areaInput" class="form-input" value="1.0" min="0.1" max="100.0" step="0.5" style="width:70px;">
+              <select id="areaUnitSelect" class="form-select" style="flex:1;">
+                <option value="ha" selected>Hectare</option>
+                <option value="acre">Acres</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Irrigation Regime</label>
+          <div class="toggle-group">
+            <button type="button" class="toggle-btn active" id="irrigationRainfed">Rainfed</button>
+            <button type="button" class="toggle-btn" id="irrigationIrrigated">Assured Irrigation</button>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">Land Tenure</label>
+            <div class="toggle-group">
+              <button type="button" class="toggle-btn active" id="tenureOwned">Owned</button>
+              <button type="button" class="toggle-btn" id="tenureLeased">Leased</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">CACP Cost Basis</label>
+            <div class="toggle-group">
+              <button type="button" class="toggle-btn active" id="costBasisA2FL">A2 + FL</button>
+              <button type="button" class="toggle-btn" id="costBasisC2">C2 (Full)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Price Realization Basis</label>
+          <div class="toggle-group">
+            <button type="button" class="toggle-btn active" id="priceBasisMarket">Mandi Modal</button>
+            <button type="button" class="toggle-btn" id="priceBasisMSP">Govt MSP</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="btnAssess" style="width:100%; padding:14px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          <span>Evaluate Land & Economics</span>
+        </button>
+
+        <!-- 4 Switchable Analytics Graphs Module -->
+        <div class="analytics-switch-card" id="analyticsSwitchCard">
+          <div class="analytics-card-header">
+            <div class="analytics-card-title">
+              <span aria-hidden="true">📊</span>
+              <span>Micro-Grid Dynamics</span>
+            </div>
+            <span class="analytics-badge" id="activeChartIndicator">ECOLOGY</span>
+          </div>
+
+          <!-- Tab Switcher Navigation -->
+          <div class="analytics-tab-row" role="tablist" aria-label="Micro-grid analysis graph options">
+            <button type="button" role="tab" class="analytics-tab-btn active" id="tabEco" aria-selected="true" data-chart="eco">
+              <span>🌱 Eco</span>
+            </button>
+            <button type="button" role="tab" class="analytics-tab-btn" id="tabEconomics" aria-selected="false" data-chart="economics">
+              <span>💰 Costs</span>
+            </button>
+            <button type="button" role="tab" class="analytics-tab-btn" id="tabPnL" aria-selected="false" data-chart="pnl">
+              <span>⚖️ P&amp;L</span>
+            </button>
+            <button type="button" role="tab" class="analytics-tab-btn" id="tabSensitivity" aria-selected="false" data-chart="sensitivity">
+              <span>📈 Return</span>
+            </button>
+          </div>
+
+          <!-- Canvas Container -->
+          <div class="analytics-chart-container">
+            <canvas id="leftAnalyticsChart" aria-label="Micro-grid conditions analytical chart" role="img"></canvas>
+          </div>
+
+          <!-- Accessible Text Summary & Metrics (Color is never the only signal) -->
+          <div class="analytics-text-summary" id="analyticsChartSummary" aria-live="polite">
+            <p class="summary-text" id="analyticsSummaryP">Annual rainfall is calibrated with seasonal monsoon and root wetness.</p>
+            <div class="analytics-key-metrics" id="analyticsKeyMetrics">
+              <span class="metric-pill" id="metricPill1">Rainfall: 1,041 mm</span>
+              <span class="metric-pill" id="metricPill2">Trend: Stable</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Panel: Land Report Card & Financials -->
+      <div class="results-container" id="resultsContainer">
+        
+        <!-- 1. Overall Land Verdict Card -->
+        <article class="verdict-card">
+          <div class="verdict-header">
+            <div class="verdict-location">
+              <span style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; color:var(--text-tertiary); letter-spacing:0.08em;">Official Sovereign Territory</span>
+              <h2 class="verdict-state" id="verdictState">Maharashtra State</h2>
+              <span class="verdict-coords" id="verdictCoords">Loading coordinate snap...</span>
+            </div>
+
+            <div class="verdict-score-badge">
+              <div class="score-circle">
+                <span class="score-number" id="scoreNumber">--</span>
+                <span class="score-max">/ 100</span>
+              </div>
+              <span class="rating-tag good" id="ratingTag">GOOD</span>
+            </div>
+          </div>
+
+          <p class="verdict-summary-text" id="verdictSummary">
+            Analyzing 15-year multi-sensor climate record and soil chemical attributes...
+          </p>
+
+          <div class="limiting-factors-list" id="limitingFactors"></div>
+        </article>
+
+        <!-- 2. Five Factor Suitability Cards Grid -->
+        <section>
+          <h3 class="heading-md" style="margin-bottom:16px;">Five Agronomic Foundations</h3>
+          <div class="factors-grid" id="factorsGrid"></div>
+        </section>
+
+        <!-- 3. Algorithm's Balanced Pick & Best-Suited Crops -->
+        <section class="crops-rank-section">
+          <h3 class="heading-md">Top Recommended Crops for this Micro-Grid</h3>
+          
+          <!-- Balanced Pick Banner -->
+          <div class="balanced-pick-banner" id="balancedCropBanner"></div>
+
+          <!-- Top Suited Chips -->
+          <div class="crop-chips-row" id="cropsRankList"></div>
+
+          <!-- Non-Recommended Crops Accordion -->
+          <details style="margin-top:12px; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:12px 16px;">
+            <summary style="font-size:0.85rem; font-weight:600; color:var(--text-secondary); cursor:pointer;">
+              View Unfavorable & High-Risk Crops for this Land Cell
+            </summary>
+            <div id="notRecommendedContainer" style="margin-top:12px; display:flex; flex-direction:column; gap:8px;"></div>
+          </details>
+        </section>
+
+        <!-- 4. Enterprise Crop Economics Financial Suite -->
+        <section class="economics-suite">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px; border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
+            <div>
+              <span style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; color:var(--cyan-400); letter-spacing:0.08em; font-weight:700;">Official CACP & DES Model</span>
+              <h3 class="heading-lg" id="econCropTitle">Crop Enterprise Financials</h3>
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-tertiary)">All values in Indian Rupee (INR)</span>
+          </div>
+
+          <!-- Primary Financial KPI Grid -->
+          <div class="econ-hero-grid">
+            <div class="econ-stat-box">
+              <span class="econ-stat-label">Projected Revenue</span>
+              <span class="econ-stat-val" id="statGrossRevenue">₹--</span>
+              <span class="econ-stat-sub">Expected yield × mandi price</span>
+            </div>
+
+            <div class="econ-stat-box">
+              <span class="econ-stat-label">Cultivation Cost</span>
+              <span class="econ-stat-val" id="statCultivationCost">₹--</span>
+              <span class="econ-stat-sub" id="statCostBasisSub">Official CACP paid-out</span>
+            </div>
+
+            <div class="econ-stat-box">
+              <span class="econ-stat-label">Net Return (Profit)</span>
+              <span class="econ-stat-val profit" id="statNetProfit">₹--</span>
+              <span class="econ-stat-sub">Over selected cost basis</span>
+            </div>
+
+            <div class="econ-stat-box">
+              <span class="econ-stat-label">Return on Investment</span>
+              <span class="econ-stat-val profit" id="statROI">--%</span>
+              <span class="econ-stat-sub">Net profit ÷ cultivation cost</span>
+            </div>
+          </div>
+
+          <!-- Secondary Metrics Row -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:16px;">
+            <div>
+              <div style="font-size:0.72rem; color:var(--text-tertiary); text-transform:uppercase;">Benefit-Cost (BCR)</div>
+              <div class="text-mono" style="font-size:1.1rem; font-weight:700;" id="statBCR">--</div>
+            </div>
+            <div>
+              <div style="font-size:0.72rem; color:var(--text-tertiary); text-transform:uppercase;">Break-even Yield</div>
+              <div class="text-mono" style="font-size:1.1rem; font-weight:700;" id="statBreakEvenYield">--</div>
+            </div>
+            <div>
+              <div style="font-size:0.72rem; color:var(--text-tertiary); text-transform:uppercase;">Break-even Price</div>
+              <div class="text-mono" style="font-size:1.1rem; font-weight:700;" id="statBreakEvenPrice">--</div>
+            </div>
+            <div>
+              <div style="font-size:0.72rem; color:var(--text-tertiary); text-transform:uppercase;">Margin of Safety</div>
+              <div class="text-mono" style="font-size:1.1rem; font-weight:700;" id="statMarginSafety">--</div>
+            </div>
+            <div>
+              <div style="font-size:0.72rem; color:var(--text-tertiary); text-transform:uppercase;">Probability of Loss</div>
+              <div class="text-mono" style="font-size:1.1rem; font-weight:700;" id="statRiskLoss">--</div>
+            </div>
+          </div>
+
+          <!-- Deep-dive: Monte Carlo Risk & Sensitivity Tornado -->
+          <div class="econ-deepdive-grid">
+            
+            <!-- Monte Carlo Confidence Intervals -->
+            <div class="deepdive-card">
+              <div class="deepdive-title">
+                <span>Deterministic Monte Carlo Risk</span>
+                <span class="rating-tag good" style="font-size:0.7rem;">5,000 Draws</span>
+              </div>
+              <p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.5;">
+                Simulating correlated lognormal yield & market price fluctuations using historical precipitation variance (CV) and mandi elasticity.
+              </p>
+              
+              <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; border-bottom:1px solid var(--border-subtle); padding-bottom:8px;">
+                  <span style="color:var(--rose-400)">Worst 10% Outcome (P10):</span>
+                  <span class="text-mono" id="monteCarloP10" style="font-weight:700;">₹--</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; border-bottom:1px solid var(--border-subtle); padding-bottom:8px;">
+                  <span style="color:var(--cyan-400)">Expected Median (P50):</span>
+                  <span class="text-mono" id="monteCarloP50" style="font-weight:700;">₹--</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                  <span style="color:var(--emerald-400)">Best 10% Upside (P90):</span>
+                  <span class="text-mono" id="monteCarloP90" style="font-weight:700;">₹--</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sensitivity Tornado -->
+            <div class="deepdive-card">
+              <div class="deepdive-title">
+                <span>Sensitivity Tornado (±10% Shift)</span>
+                <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-tertiary)">Impact on Net Return</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:12px; margin-top:4px;" id="tornadoList"></div>
+            </div>
+          </div>
+
+          <!-- Interactive Scenario Sandbox Sliders -->
+          <div class="scenario-controls-box">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <span style="font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; color:var(--cyan-400); font-weight:700;">Interactive Sandbox</span>
+                <div style="font-size:0.95rem; font-weight:700;">Stress-Test Scenarios for this Farm</div>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnResetSandbox">Reset to Official Baseline</button>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px;">
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>Simulated Yield Override</span>
+                  <span class="slider-val" id="valYield">-- q/ha</span>
+                </div>
+                <input type="range" id="sliderYield" class="range-slider" min="5" max="90" step="1" value="35">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>Mandi Price Override</span>
+                  <span class="slider-val" id="valPrice">₹--</span>
+                </div>
+                <input type="range" id="sliderPrice" class="range-slider" min="1000" max="12000" step="50" value="2300">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-header">
+                  <span>Input Cost Inflation Multiplier</span>
+                  <span class="slider-val" id="valCost">1.0x</span>
+                </div>
+                <input type="range" id="sliderCost" class="range-slider" min="0.7" max="1.5" step="0.05" value="1.0">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Action Plan & Farm Management -->
+        <section class="deepdive-card" style="background:var(--bg-secondary);">
+          <div class="deepdive-title">
+            <span>Soil Amendments & Targeted Management</span>
+            <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-tertiary)">Rule-Driven Advisory</span>
+          </div>
+          <ul id="amendmentsList" style="padding-left:20px; font-size:0.85rem; color:var(--text-secondary); line-height:1.6;"></ul>
+          
+          <div style="border-top:1px solid var(--border-subtle); padding-top:14px; margin-top:8px;">
+            <div style="font-size:0.8rem; font-weight:700; color:var(--text-primary); margin-bottom:6px;">Government Schemes & Institutional Credit Context:</div>
+            <div id="policyNotes"></div>
+          </div>
+        </section>
+
+        <!-- 6. Multi-Dataset Scientific Consensus Table -->
+        <section class="deepdive-card" style="background:var(--bg-secondary);">
+          <div class="deepdive-title">
+            <span>Multi-Dataset Space Consensus Matrix</span>
+            <span class="rating-tag" style="background:var(--bg-subtle); color:var(--text); border:1px solid var(--border); font-size:0.7rem;">Strict Overlapping Years</span>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-secondary);">
+            Independent sensors cross-compared at the 0.25° grid level. Eliminates single-model artifact bias.
+          </p>
+          <div style="overflow-x:auto;">
+            <table class="consensus-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 190px; width: 22%;">Indicator Group</th>
+                  <th style="min-width: 220px; width: 28%;">Observation Sources</th>
+                  <th style="min-width: 140px; width: 16%; text-align: center;">Agreement</th>
+                  <th style="min-width: 280px; width: 34%;">Scientific Consensus Verdict</th>
+                </tr>
+              </thead>
+              <tbody id="consensusTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- Editorial Feature Showcase -->
+    <section class="section-spacing" style="border-top:1px solid var(--border-subtle); padding-top:64px;">
+      <div style="max-width:800px; margin-bottom:48px;">
+        <span style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; color:var(--cyan-400); letter-spacing:0.08em; font-weight:700;">Scientific Integrity</span>
+        <h2 class="heading-xl" style="margin-top:8px;">Why Single Satellites Fail Indian Agriculture.</h2>
+        <p class="text-lead" style="margin-top:12px;">
+          Atmospheric sounding, microwave soil sensing, and optical vegetation indices each carry inherent blind spots during the South Asian Summer Monsoon. TerraTrend enforces strict multi-dataset consensus before issuing climate trend advisories.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+        <div class="factor-card" style="padding:28px;">
+          <h4 style="font-size:1.1rem; font-weight:700; color:var(--emerald-400);">Hamed-Rao Serial Correlation</h4>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-top:8px; line-height:1.6;">
+            Standard Mann-Kendall tests flag false trends due to natural multi-year monsoon cycles. The Hamed-Rao modification calculates empirical lag autocorrelations, ensuring p &lt; 0.05 represents true physical climate shifts.
+          </p>
+        </div>
+
+        <div class="factor-card" style="padding:28px;">
+          <h4 style="font-size:1.1rem; font-weight:700; color:var(--cyan-400);">Zero-Guesswork Farm Economics</h4>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-top:8px; line-height:1.6;">
+            Every cost and yield benchmark references empirical Directorate of Economics and Statistics (DES) and Commission for Agricultural Costs and Prices (CACP) field survey schemes across 70 state-crop combinations.
+          </p>
+        </div>
+
+        <div class="factor-card" style="padding:28px;">
+          <h4 style="font-size:1.1rem; font-weight:700; color:var(--amber-400);">Islands & Coastal Land-Surface Fallback</h4>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-top:8px; line-height:1.6;">
+            Small island cells (Lakshadweep, Andaman & Nicobar) marked as water in coarse land models fall back to nearest valid land within 30 km while directly preserving unmasked atmospheric datasets.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Editorial Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        <strong>TerraTrend</strong> • Geospatial Decision Engine for India • NASA Space Apps Challenge 2026<br>
+        <span style="color:var(--text-tertiary)">Coverage: Sovereign Indian Territory strictly compliant with Survey of India official boundary depictions.</span>
+      </div>
+
+      <div class="footer-badge-row">
+        <span class="footer-badge">NASA GES DISC</span>
+        <span class="footer-badge">NASA LP DAAC</span>
+        <span class="footer-badge">NASA ORNL DAAC</span>
+        <span class="footer-badge">CACP / DA&FW</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Main Application Script -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

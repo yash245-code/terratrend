@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#142004">
+  <title>TerraTrend — Orbital Earth Intelligence & Farm Economics for India</title>
+  <meta name="description" content="Geospatial agricultural decision-support web app for India. Synthesizing multi-decadal NASA Earth observation time series and official CACP economics.">
+  
+  <!-- Custom Master Stylesheet -->
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <!-- Theme initial script before paint -->
+  <script src="/static/js/theme.js"></script>
+</head>
+<body>
+
+  <!-- Minimalist Fixed Header Navigation -->
+  <header class="nav-header">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="nav-title">TerraTrend</span>
+        <span class="nav-badge">India 2026</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link active">Home</a></li>
+          <li><a href="/decision" class="nav-link">Decision Engine</a></li>
+          <li><a href="/methodology" class="nav-link">Methodology & Science</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle theme">
+          <span>🌓</span> <span class="theme-label">Auto</span>
+        </button>
+        <div class="live-telemetry-pill">
+          <span class="pulse-dot"></span>
+          <span>NASA Telemetry Active</span>
+        </div>
+        <a href="/decision" class="btn btn-primary btn-sm" style="margin-left: 8px;">Launch App</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Wrapper -->
+  <main class="page-wrapper">
+
+    <!-- Hero Section -->
+    <section class="landing-hero">
+      <div class="hero-eyebrow">
+        <span>NASA Space Apps Challenge 2026</span>
+        <div class="hero-eyebrow-dash"></div>
+        <span>Be An Earth System Trend Detective!</span>
+      </div>
+
+      <h1 class="landing-title">
+        ORBITAL EARTH INTELLIGENCE & FARM ECONOMICS FOR INDIA.
+      </h1>
+
+      <p class="landing-subtitle">
+        TerraTrend synthesizes 20 years of continuous NASA satellite observations, reanalysis models, and official Government of India (CACP) economics into definitive land suitability report cards and actionable crop profitability forecasts.
+      </p>
+
+      <!-- CTA Action Button Row -->
+      <div class="landing-cta-row">
+        <a href="/decision" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span>Launch Decision Engine</span>
+        </a>
+        <a href="/methodology" class="btn btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Methodology & Science</span>
+        </a>
+      </div>
+
+      <!-- Real-Time Metrics Strip -->
+      <div class="landing-metrics-strip">
+        <div class="landing-metric-card">
+          <div class="landing-metric-val">20+ YRS</div>
+          <div class="landing-metric-lbl">Observational Record (2005–2025)</div>
+        </div>
+        <div class="landing-metric-card">
+          <div class="landing-metric-val">6 SENSORS</div>
+          <div class="landing-metric-lbl">GLDAS, MERRA-2, GPM, MODIS, AIRS, OMI</div>
+        </div>
+        <div class="landing-metric-card">
+          <div class="landing-metric-val">24 CROPS</div>
+          <div class="landing-metric-lbl">CACP A2, A2+FL & C2 Cost Baselines</div>
+        </div>
+        <div class="landing-metric-card">
+          <div class="landing-metric-val">100% INDIA</div>
+          <div class="landing-metric-lbl">Survey of India Sovereign Territorial Grid</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two Core Operational Pillars -->
+    <section class="section-spacing">
+      <div class="section-header-block">
+        <span class="tech-badge">CORE ARCHITECTURE</span>
+        <h2 class="section-title">An Integrated Earth Intelligence & Economic Engine</h2>
+        <p class="section-desc">
+          TerraTrend bridges the gap between petabyte-scale NASA orbital sounders and ground-level farming decisions across India's 36 States and Union Territories.
+        </p>
+      </div>
+
+      <div class="pillars-grid" style="grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));">
+        
+        <!-- Pillar 1: Decision Engine -->
+        <article class="pillar-card">
+          <div class="pillar-eyebrow">
+            <span class="pillar-num">01</span>
+            <span class="rating-tag good" style="font-size:0.7rem;">DECISION ENGINE</span>
+          </div>
+
+          <h3 class="pillar-title">5-Factor Land Suitability & CACP Economics</h3>
+          
+          <p class="pillar-text">
+            Pinpoint any parcel in India to generate an instant 5-factor land report card. Evaluates temperature, moisture, soil pH, soil quality, and climate stability with piecewise-linear trapezoid scoring and Liebig's weak-link capping rule.
+          </p>
+
+          <div class="pillar-feature-list">
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>State-specific physical calibration across all 36 Indian States and Union Territories</span>
+            </div>
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>Ranked best-suited crops, misfits, and automated 'Balanced Pick' detection</span>
+            </div>
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>Full CACP Cost A2, A2+FL, and C2 breakdown with MSP floor benchmarks</span>
+            </div>
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>5,000-draw Monte Carlo risk simulation with P10/P50/P90 net return percentiles</span>
+            </div>
+          </div>
+
+          <div style="margin-top:auto; padding-top:20px;">
+            <a href="/decision" class="btn btn-primary" style="width:100%; justify-content:center;">
+              Launch Decision Engine →
+            </a>
+          </div>
+        </article>
+
+        <!-- Pillar 2: Methodology & Science -->
+        <article class="pillar-card">
+          <div class="pillar-eyebrow">
+            <span class="pillar-num">02</span>
+            <span class="rating-tag moderate" style="font-size:0.7rem;">OPEN SCIENCE</span>
+          </div>
+
+          <h3 class="pillar-title">Scientific Methodology & Validation Whitepaper</h3>
+          
+          <p class="pillar-text">
+            Complete transparency into the mathematical formulations, statistical tests, agronomic trapezoidal response functions, and Government of India agricultural accounting standards.
+          </p>
+
+          <div class="pillar-feature-list">
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>7 NASA GES DISC / ORNL DAAC datasets across the Survey of India 0.25° grid</span>
+            </div>
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>Hamed-Rao Modified Mann-Kendall serial autocorrelation variance correction</span>
+            </div>
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>Sen's median slope estimators with strict p &lt; 0.05 statistical significance gates</span>
+            </div>
+            <div class="pillar-feature-item">
+              <span class="pillar-dot"></span>
+              <span>ICAR-NBSS&amp;LUP ground truth benchmarks and CACP cost formulas</span>
+            </div>
+          </div>
+
+          <div style="margin-top:auto; padding-top:20px;">
+            <a href="/methodology" class="btn btn-secondary" style="width:100%; justify-content:center;">
+              Read Methodology &amp; Science Whitepaper →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- NASA Earth Observation Constellation Matrix -->
+    <section class="section-spacing" style="border-top:1px solid var(--border-subtle); padding-top:64px;">
+      <div class="section-header-block">
+        <span class="tech-badge">EARTH DATA SENSORS</span>
+        <h2 class="section-title">Ingested Satellite Constellation</h2>
+        <p class="section-desc">
+          Continuous assimilation of NASA Goddard, JPL, and Langley distributed active archive center (DAAC) products.
+        </p>
+      </div>
+
+      <div class="editorial-table-wrapper">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Mission / Sensor</th>
+              <th>Product Identifier</th>
+              <th>Spatial Resolution</th>
+              <th>Temporal Domain</th>
+              <th>Agronomic Utility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge-sensor">GLDAS 2.1</span> NOAH Land Model</td>
+              <td>GLDAS_NOAH025_M_2.1</td>
+              <td>0.25° × 0.25° (~27 km)</td>
+              <td>2005 – Present (Monthly)</td>
+              <td>Root soil moisture, air temp, evaporation</td>
+            </tr>
+            <tr>
+              <td><span class="badge-sensor">MERRA-2</span> Atmospheric Reanalysis</td>
+              <td>M2TMNXFLX / M2TMNXSLV</td>
+              <td>0.5° × 0.625°</td>
+              <td>2005 – Present</td>
+              <td>Atmospheric boundary conditions & wetness</td>
+            </tr>
+            <tr>
+              <td><span class="badge-sensor">GPM IMERG</span> Multi-Satellite</td>
+              <td>GPM_3IMERGM_07 (Final)</td>
+              <td>0.1° × 0.1° (~10 km)</td>
+              <td>2005 – Present</td>
+              <td>Monsoon precipitation accumulation</td>
+            </tr>
+            <tr>
+              <td><span class="badge-sensor">MODIS</span> Terra / Aqua</td>
+              <td>MOD13C2 / MYD13C2 V061</td>
+              <td>0.05° CMG (~5.5 km)</td>
+              <td>2005 – Present</td>
+              <td>NDVI canopy vigor and vegetative stress</td>
+            </tr>
+            <tr>
+              <td><span class="badge-sensor">AIRS</span> Aqua Infrared Sounder</td>
+              <td>AIRS3STM_7.0</td>
+              <td>1.0° × 1.0°</td>
+              <td>2005 – Present</td>
+              <td>Independent thermal validation layer</td>
+            </tr>
+            <tr>
+              <td><span class="badge-sensor">Aura OMI</span> Ozone Monitoring Instrument</td>
+              <td>OMNO2d V003</td>
+              <td>0.25° × 0.25°</td>
+              <td>2005 – Present</td>
+              <td>Tropospheric NO₂ pollution & crop damage</td>
+            </tr>
+            <tr>
+              <td><span class="badge-sensor">HWSD v2.0</span> Soil Grid</td>
+              <td>FAO / IIASA / ISRIC</td>
+              <td>30 arc-sec (~1 km)</td>
+              <td>Static Profile</td>
+              <td>Soil pH, organic carbon, drainage, CEC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Sovereign Territory Compliance -->
+    <section class="section-spacing" style="border-top:1px solid var(--border-subtle); padding-top:64px; margin-bottom:48px;">
+      <div class="factor-card" style="padding: 36px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
+        <div style="max-width: 680px;">
+          <span class="tech-badge" style="background:var(--good-bg); color:var(--good-ink); border-color:var(--border-strong);">
+            OFFICIAL BOUNDARY COMPLIANCE
+          </span>
+          <h3 style="font-size:1.4rem; margin-top:12px; color:var(--text-primary);">
+            Survey of India Territorial Integrity
+          </h3>
+          <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6; margin-top:8px;">
+            TerraTrend strictly enforces coverage of all 28 States and 8 Union Territories as officially depicted by the Government of India, including Jammu & Kashmir, Ladakh, Arunachal Pradesh, Andaman & Nicobar Islands, and Lakshadweep. Coastal and island cells feature automated fallback algorithms to guarantee uninterrupted coverage.
+          </p>
+        </div>
+        <div>
+          <a href="/decision" class="btn btn-primary" style="padding: 14px 28px;">
+            Enter Decision Engine →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Editorial Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        <strong style="color:var(--text-primary)">TerraTrend</strong> • Geospatial Decision Engine for India • NASA Space Apps Challenge 2026<br>
+        <span style="color:var(--text-tertiary)">Coverage: Sovereign Indian Territory strictly compliant with Survey of India official boundary depictions.</span>
+      </div>
+
+      <div class="footer-badge-row">
+        <span class="footer-badge">NASA GES DISC</span>
+        <span class="footer-badge">NASA LP DAAC</span>
+        <span class="footer-badge">NASA ORNL DAAC</span>
+        <span class="footer-badge">CACP / DA&FW</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

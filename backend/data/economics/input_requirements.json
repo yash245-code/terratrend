@@ -1,0 +1,322 @@
+{
+  "wheat": {
+    "crop": "wheat",
+    "seed_rate_kg_ha": 100.0,
+    "npk_kg_ha": [
+      120,
+      60,
+      40
+    ],
+    "irrigation_count": 5,
+    "season_water_requirement_mm": 450.0,
+    "labour_man_days_ha": 45.0,
+    "plant_protection_sprays": 2,
+    "source": "ICAR-IIWBR Karnal",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "rice": {
+    "crop": "rice",
+    "seed_rate_kg_ha": 40.0,
+    "npk_kg_ha": [
+      120,
+      60,
+      60
+    ],
+    "irrigation_count": 14,
+    "season_water_requirement_mm": 1250.0,
+    "labour_man_days_ha": 85.0,
+    "plant_protection_sprays": 3,
+    "source": "ICAR-NRRI Cuttack",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "maize": {
+    "crop": "maize",
+    "seed_rate_kg_ha": 20.0,
+    "npk_kg_ha": [
+      120,
+      60,
+      40
+    ],
+    "irrigation_count": 4,
+    "season_water_requirement_mm": 550.0,
+    "labour_man_days_ha": 48.0,
+    "plant_protection_sprays": 2,
+    "source": "ICAR-IIMR Ludhiana",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "sorghum": {
+    "crop": "sorghum",
+    "seed_rate_kg_ha": 10.0,
+    "npk_kg_ha": [
+      80,
+      40,
+      40
+    ],
+    "irrigation_count": 2,
+    "season_water_requirement_mm": 400.0,
+    "labour_man_days_ha": 38.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-IIMR Hyderabad",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "pearl_millet": {
+    "crop": "pearl_millet",
+    "seed_rate_kg_ha": 4.0,
+    "npk_kg_ha": [
+      60,
+      30,
+      20
+    ],
+    "irrigation_count": 1,
+    "season_water_requirement_mm": 350.0,
+    "labour_man_days_ha": 34.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-AICRP Pearl Millet",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "finger_millet": {
+    "crop": "finger_millet",
+    "seed_rate_kg_ha": 5.0,
+    "npk_kg_ha": [
+      60,
+      30,
+      30
+    ],
+    "irrigation_count": 2,
+    "season_water_requirement_mm": 400.0,
+    "labour_man_days_ha": 42.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-AICRP Small Millets",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "barley": {
+    "crop": "barley",
+    "seed_rate_kg_ha": 90.0,
+    "npk_kg_ha": [
+      60,
+      30,
+      20
+    ],
+    "irrigation_count": 3,
+    "season_water_requirement_mm": 350.0,
+    "labour_man_days_ha": 36.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-IIWBR Karnal",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "chickpea": {
+    "crop": "chickpea",
+    "seed_rate_kg_ha": 75.0,
+    "npk_kg_ha": [
+      20,
+      50,
+      20
+    ],
+    "irrigation_count": 2,
+    "season_water_requirement_mm": 300.0,
+    "labour_man_days_ha": 35.0,
+    "plant_protection_sprays": 2,
+    "source": "ICAR-IIPR Kanpur",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "pigeon_pea": {
+    "crop": "pigeon_pea",
+    "seed_rate_kg_ha": 15.0,
+    "npk_kg_ha": [
+      25,
+      50,
+      20
+    ],
+    "irrigation_count": 2,
+    "season_water_requirement_mm": 450.0,
+    "labour_man_days_ha": 48.0,
+    "plant_protection_sprays": 3,
+    "source": "ICAR-IIPR Kanpur",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "mung_bean": {
+    "crop": "mung_bean",
+    "seed_rate_kg_ha": 20.0,
+    "npk_kg_ha": [
+      20,
+      40,
+      20
+    ],
+    "irrigation_count": 1,
+    "season_water_requirement_mm": 250.0,
+    "labour_man_days_ha": 32.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-IIPR Kanpur",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "lentil": {
+    "crop": "lentil",
+    "seed_rate_kg_ha": 40.0,
+    "npk_kg_ha": [
+      20,
+      40,
+      20
+    ],
+    "irrigation_count": 2,
+    "season_water_requirement_mm": 250.0,
+    "labour_man_days_ha": 32.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-IIPR Kanpur",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "mustard": {
+    "crop": "mustard",
+    "seed_rate_kg_ha": 5.0,
+    "npk_kg_ha": [
+      80,
+      40,
+      40
+    ],
+    "irrigation_count": 3,
+    "season_water_requirement_mm": 350.0,
+    "labour_man_days_ha": 38.0,
+    "plant_protection_sprays": 2,
+    "source": "ICAR-DRMR Bharatpur",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "groundnut": {
+    "crop": "groundnut",
+    "seed_rate_kg_ha": 120.0,
+    "npk_kg_ha": [
+      25,
+      50,
+      50
+    ],
+    "irrigation_count": 4,
+    "season_water_requirement_mm": 550.0,
+    "labour_man_days_ha": 65.0,
+    "plant_protection_sprays": 2,
+    "source": "ICAR-DGR Junagadh",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "soybean": {
+    "crop": "soybean",
+    "seed_rate_kg_ha": 70.0,
+    "npk_kg_ha": [
+      30,
+      60,
+      40
+    ],
+    "irrigation_count": 1,
+    "season_water_requirement_mm": 450.0,
+    "labour_man_days_ha": 40.0,
+    "plant_protection_sprays": 2,
+    "source": "ICAR-IISR Indore",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "sesame": {
+    "crop": "sesame",
+    "seed_rate_kg_ha": 5.0,
+    "npk_kg_ha": [
+      40,
+      25,
+      20
+    ],
+    "irrigation_count": 1,
+    "season_water_requirement_mm": 300.0,
+    "labour_man_days_ha": 35.0,
+    "plant_protection_sprays": 1,
+    "source": "ICAR-AICRP Sesame",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "cotton": {
+    "crop": "cotton",
+    "seed_rate_kg_ha": 3.0,
+    "npk_kg_ha": [
+      120,
+      60,
+      60
+    ],
+    "irrigation_count": 5,
+    "season_water_requirement_mm": 700.0,
+    "labour_man_days_ha": 95.0,
+    "plant_protection_sprays": 5,
+    "source": "ICAR-CICR Nagpur",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "sugarcane": {
+    "crop": "sugarcane",
+    "seed_rate_kg_ha": 7500.0,
+    "npk_kg_ha": [
+      250,
+      100,
+      100
+    ],
+    "irrigation_count": 18,
+    "season_water_requirement_mm": 1800.0,
+    "labour_man_days_ha": 130.0,
+    "plant_protection_sprays": 3,
+    "source": "ICAR-IISR Lucknow",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "potato": {
+    "crop": "potato",
+    "seed_rate_kg_ha": 2500.0,
+    "npk_kg_ha": [
+      150,
+      100,
+      120
+    ],
+    "irrigation_count": 6,
+    "season_water_requirement_mm": 500.0,
+    "labour_man_days_ha": 90.0,
+    "plant_protection_sprays": 4,
+    "source": "ICAR-CPRI Shimla",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "tomato": {
+    "crop": "tomato",
+    "seed_rate_kg_ha": 0.5,
+    "npk_kg_ha": [
+      150,
+      100,
+      100
+    ],
+    "irrigation_count": 8,
+    "season_water_requirement_mm": 600.0,
+    "labour_man_days_ha": 110.0,
+    "plant_protection_sprays": 6,
+    "source": "ICAR-IIHR Bengaluru",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  },
+  "onion": {
+    "crop": "onion",
+    "seed_rate_kg_ha": 10.0,
+    "npk_kg_ha": [
+      100,
+      50,
+      50
+    ],
+    "irrigation_count": 10,
+    "season_water_requirement_mm": 550.0,
+    "labour_man_days_ha": 95.0,
+    "plant_protection_sprays": 4,
+    "source": "ICAR-DOGR Pune",
+    "as_of": "2024-06",
+    "verification_status": "verified"
+  }
+}

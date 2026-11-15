@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+!**/.env.example
 *.pem
 *.key
 .netrc
@@ -43,19 +44,25 @@ htmlcov/
 .ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/
 
-# ── TerraTrend data (large NASA files) ──
-data/raw/
+# ── TeraTrend data (large NASA files & raw downloads) ──
+**/data/raw/
+**/data/tmp/
+**/data/cache/
+**/data/*.db
+**/data/*.db-wal
+**/data/*.db-shm
+*.db
+*.db-wal
+*.db-shm
 *.nc4
 *.hdf5
 *.h5
-data/tmp/
-data/cache/
+*.he5
 
-# Keep the processed regional cube and crop rules tracked
-!data/processed/
-!data/processed/india_cube.nc
-!data/crops/
-!data/crops/crop_rules.json
+# Generated multi-gigabyte NetCDF cubes (reproduced via pipeline)
+backend/data/processed/*_cube.nc
+!backend/data/processed/india_grid.nc
+!backend/data/processed/provenance.json
 
 # ── Earthaccess / NASA Earthdata ──
 .earthaccess/

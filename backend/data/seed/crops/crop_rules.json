@@ -1,0 +1,230 @@
+{
+  "root_moisture_decreasing": {
+    "headline": "Root-Zone Drying Trend Detected",
+    "message": "Independent satellite and reanalysis observations indicate a statistically significant decline in root-zone soil wetness. Transition towards deep-rooting, drought-resilient crops and water-conserving practices.",
+    "crops": [
+      "pearl_millet",
+      "sorghum",
+      "chickpea",
+      "pigeon_pea",
+      "mung_bean"
+    ],
+    "avoid": [
+      "rice",
+      "sugarcane"
+    ],
+    "practices": [
+      "Shift from flood irrigation to drip or sprinkler micro-irrigation systems.",
+      "Adopt conservation furrow and broad-bed furrow planting for moisture conservation.",
+      "Maintain 30%+ crop residue mulch on soil surface.",
+      "Construct farm ponds for critical stage supplemental protective irrigation."
+    ]
+  },
+  "root_moisture_increasing": {
+    "headline": "Root-Zone Moisture Expansion Trend Detected",
+    "message": "Significant upward trend in root-zone wetness observed. Take advantage of improved moisture availability while safeguarding against root asphyxiation.",
+    "crops": [
+      "rice",
+      "maize",
+      "sugarcane",
+      "soybean"
+    ],
+    "avoid": [
+      "chickpea",
+      "pigeon_pea",
+      "pearl_millet"
+    ],
+    "practices": [
+      "Construct perimeter drainage trenches and raised beds to prevent waterlogging.",
+      "Introduce green manures and high-biomass cover crops.",
+      "Select waterlogging-tolerant varieties."
+    ]
+  },
+  "surface_moisture_decreasing": {
+    "headline": "Topsoil Desiccation Trend Detected",
+    "message": "Topsoil (0-10 cm) moisture is exhibiting a downward trend, heightening early seed germination risk.",
+    "crops": [
+      "pearl_millet",
+      "sesame",
+      "sorghum"
+    ],
+    "avoid": [
+      "potato",
+      "rice"
+    ],
+    "practices": [
+      "Apply light pre-sowing irrigation or time drilling precisely with rain events.",
+      "Use organic or plastic mulch to suppress surface evaporation.",
+      "Adopt zero-till seed drills to preserve residual seedbed moisture."
+    ]
+  },
+  "surface_moisture_increasing": {
+    "headline": "Surface Wetness Increase Trend Detected",
+    "message": "Surface moisture is trending higher, which facilitates seedling establishment but increases fungal damping-off risks.",
+    "crops": [
+      "rice",
+      "soybean",
+      "maize"
+    ],
+    "avoid": [
+      "sesame",
+      "onion"
+    ],
+    "practices": [
+      "Treat seeds with bio-fungicides (Trichoderma viride) prior to sowing.",
+      "Ensure surface drainage to avoid crusting and seed rot."
+    ]
+  },
+  "air_temperature_increasing": {
+    "headline": "Warming Trend & Thermal Stress Risk Detected",
+    "message": "Significant warming detected over the multi-decadal observation period. Elevated temperatures accelerate phenology and reduce grain-filling duration.",
+    "crops": [
+      "pearl_millet",
+      "sorghum",
+      "mung_bean",
+      "sesame"
+    ],
+    "avoid": [
+      "barley",
+      "potato",
+      "wheat"
+    ],
+    "practices": [
+      "Advance rabi sowing window to complete grain filling before March heat spikes.",
+      "Adopt heat-tolerant cultivars (e.g. DBW series for wheat, heat-tolerant pulses).",
+      "Employ micro-sprinklers for microclimate evaporative cooling during bloom.",
+      "Maintain organic ground cover to moderate root-zone temperature."
+    ]
+  },
+  "air_temperature_decreasing": {
+    "headline": "Cooling / Lower Thermal Window Trend Detected",
+    "message": "Thermal accumulation trend shows moderation. Cold-sensitive crops may experience extended maturity windows.",
+    "crops": [
+      "barley",
+      "mustard",
+      "wheat",
+      "lentil"
+    ],
+    "avoid": [
+      "cotton",
+      "sesame"
+    ],
+    "practices": [
+      "Avoid late sowing to ensure adequate growing degree days before peak winter.",
+      "Provide light smoke or protective irrigation during cold wave / frost alerts."
+    ]
+  },
+  "rainfall_decreasing": {
+    "headline": "Precipitation Deficit Trend Detected",
+    "message": "Significant reduction in annual rainfall totals observed across satellite precipitation datasets. Adapt crop selection to lower rainfall regimes.",
+    "crops": [
+      "pearl_millet",
+      "sorghum",
+      "finger_millet",
+      "mung_bean",
+      "sesame"
+    ],
+    "avoid": [
+      "rice",
+      "sugarcane",
+      "cotton"
+    ],
+    "practices": [
+      "Adopt dryland farming packages and drought-hardy millets.",
+      "Harvest runoff in in-situ farm ponds for 1-2 life-saving supplemental irrigations.",
+      "Practice wider row spacing and population thinning to reduce moisture competition."
+    ]
+  },
+  "rainfall_increasing": {
+    "headline": "Precipitation Enhancement Trend Detected",
+    "message": "Annual rainfall volume has increased over the multi-decadal baseline, offering higher water harvesting and crop production potential.",
+    "crops": [
+      "rice",
+      "sugarcane",
+      "maize",
+      "soybean"
+    ],
+    "avoid": [
+      "pearl_millet",
+      "sesame"
+    ],
+    "practices": [
+      "Invest in drainage infrastructure to prevent ponding and nutrient leaching.",
+      "Harvest excess runoff into community tanks or recharge open wells.",
+      "Introduce double-cropping where rainfall season duration has extended."
+    ]
+  },
+  "evapotranspiration_increasing": {
+    "headline": "Atmospheric Evaporative Demand Trending Upward",
+    "message": "Higher crop water requirements driven by elevated vapor pressure deficits and temperatures.",
+    "crops": [
+      "sorghum",
+      "pearl_millet",
+      "pigeon_pea"
+    ],
+    "avoid": [
+      "rice",
+      "sugarcane"
+    ],
+    "practices": [
+      "Install windbreaks and shelterbelts along farm borders to reduce advective drying.",
+      "Switch to precision drip fertigation to match peak evaporative demand."
+    ]
+  },
+  "evapotranspiration_decreasing": {
+    "headline": "Evaporative Demand Trending Downward",
+    "message": "Lower reference evapotranspiration observed, often linked to increased cloudiness or aerosol dimming.",
+    "crops": [
+      "wheat",
+      "mustard",
+      "chickpea"
+    ],
+    "avoid": [],
+    "practices": [
+      "Monitor fungal foliar diseases associated with prolonged leaf wetness and humidity."
+    ]
+  },
+  "ndvi_decreasing": {
+    "headline": "Vegetation Productivity Decline Detected",
+    "message": "MODIS satellite vegetation index reveals multi-year decline in vegetative vigor and green biomass across this grid cell.",
+    "crops": [
+      "mung_bean",
+      "pigeon_pea"
+    ],
+    "avoid": [],
+    "practices": [
+      "Conduct comprehensive soil fertility testing to identify micronutrient and organic matter deficits.",
+      "Survey local stands for chronic pest infestation, soil salinity, or groundwater depletion."
+    ]
+  },
+  "evi_decreasing": {
+    "headline": "Enhanced Vegetation Index Downward Trend Detected",
+    "message": "Multi-year decrease in canopy structural vigor detected via MODIS EVI time series.",
+    "crops": [
+      "mung_bean",
+      "finger_millet"
+    ],
+    "avoid": [],
+    "practices": [
+      "Implement integrated soil health and restorative crop rotations."
+    ]
+  },
+  "no2_increasing": {
+    "headline": "Elevated Tropospheric NO2 Trend (Air Quality Context)",
+    "message": "Satellite OMI sensor records increased tropospheric NO2 column density. This provides regional industrial / transport emissions context only and does NOT warrant a crop change.",
+    "crops": [],
+    "avoid": [],
+    "practices": [
+      "Air quality context only. Maintain standard agronomic practices."
+    ]
+  },
+  "ozone_increasing": {
+    "headline": "Elevated Total Column Ozone Trend (Air Quality Context)",
+    "message": "Satellite OMI sensor records increased total column ozone. This provides atmospheric context only and does NOT warrant a crop change.",
+    "crops": [],
+    "avoid": [],
+    "practices": [
+      "Air quality context only. Maintain standard agronomic practices."
+    ]
+  }
+}
