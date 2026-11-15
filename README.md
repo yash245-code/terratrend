@@ -1,4 +1,4 @@
-# TeraTrend — Orbital Earth Intelligence & Farm Economics for India
+# TerraTrend — Orbital Earth Intelligence & Farm Economics for India
 
 [![NASA Space Apps Challenge 2026](https://img.shields.io/badge/NASA%20Space%20Apps-Challenge%202026-0B3D91?style=for-the-badge&logo=nasa&logoColor=white)](https://www.spaceappschallenge.org/)
 [![Challenge Track](https://img.shields.io/badge/Track-Be%20An%20Earth%20System%20Trend%20Detective!-blueviolet?style=for-the-badge)](https://www.spaceappschallenge.org/)
@@ -8,17 +8,17 @@
 [![Tests Passing](https://img.shields.io/badge/Automated%20Tests-104%20Passing-success?style=for-the-badge&logo=pytest&logoColor=white)](#automated-testing--verification)
 
 > **"Will conditions stay good, or are they getting worse?"**  
-> TeraTrend bridges multi-decadal NASA Earth observation satellite time series with Government of India (CACP) cost-of-cultivation economics. It delivers high-resolution **5-factor land report cards**, **statistically verified 10-year climatic outlooks**, and **comprehensive farm economics (ROI, break-even, risk of loss)** for any coordinate in India.
+> terraTrend bridges multi-decadal NASA Earth observation satellite time series with Government of India (CACP) cost-of-cultivation economics. It delivers high-resolution **5-factor land report cards**, **statistically verified 10-year climatic outlooks**, and **comprehensive farm economics (ROI, break-even, risk of loss)** for any coordinate in India.
 
 ---
 
 ## Table of Contents
 1. [The Problem & Opportunity](#the-problem--opportunity)
-2. [What TeraTrend Does](#what-teratrend-does)
+2. [What terraTrend Does](#what-terratrend-does)
 3. [The Core Scientific & Economic Pillars](#the-core-scientific--economic-pillars)
 4. [NASA & Earth Observation Datasets Used](#nasa--earth-observation-datasets-used)
 5. [System Architecture](#system-architecture)
-6. [Interactive Web Experience](#interactive-web-experience)
+6. [Interractive Web Experience](#interractive-web-experience)
 7. [Quickstart Guide](#quickstart-guide)
 8. [CLI & Database Operations](#cli--database-operations)
 9. [Automated Testing & Verification](#automated-testing--verification)
@@ -34,16 +34,16 @@ Over 140 million farm holdings across India face increasing climate volatility: 
 
 Traditional weather apps provide **7-day seasonal forecasts** — useful for tomorrow's spray, but useless for multi-year capital investments such as crop selection, borewell installation, or soil reclamation. Meanwhile, satellite earth science repositories contain petabytes of historical observations that remain locked behind complex HDF5/NetCDF scientific formats, inaccessible to farmers, Farmer Producer Organisations (FPOs), and agricultural lenders.
 
-**TeraTrend solves this gap.** It acts as an **Earth System Trend Detective**:
+**terraTrend solves this gap.** It acts as an **Earth System Trend Detective**:
 - Evaluates 15–20 years of continuous NASA satellite observations.
 - Uses autocorrelation-corrected trend detection (**Hamed-Rao Modified Mann-Kendall**) to distinguish true climatic degradation from random weather noise.
 - Directly translates physical trends into financial viability using official Ministry of Agriculture **CACP benchmark economics** (A2+FL and C2 cost structures).
 
 ---
 
-## What TeraTrend Does
+## What terraTrend Does
 
-When a user selects any location in India (via interactive map click, lat/lon coordinate, or place-name search):
+When a user selects any location in India (via interractive map click, lat/lon coordinate, or place-name search):
 
 ```
        [ Satellite Telemetry ]                 [ Ground Truth ]
@@ -53,7 +53,7 @@ NASA GLDAS • MERRA-2 • GPM • MODIS        Survey of India Boundaries
                 └───────────────┬───────────────────────┘
                                 ▼
                    ┌─────────────────────────┐
-                   │   TeraTrend Platform    │
+                   │   terraTrend Platform    │
                    └────────────┬────────────┘
                                 │
         ┌───────────────────────┴───────────────────────┐
@@ -78,24 +78,24 @@ Every coordinate is evaluated across five fundamental agronomic dimensions using
 - **Moisture (25% weight):** Annual rainfall, root-zone wetness (NOAH layer 2 & MERRA-2), and dry spell frequency. Supports rainfed vs. irrigated toggle.
 - **Soil pH (15% weight):** Topsoil and subsoil pH with automatic triggers for agricultural amendments (agricultural lime for acidic soils; gypsum for sodic soils).
 - **Soil Quality (20% weight):** Organic Carbon (OC%), Cation Exchange Capacity (CEC), USDA soil texture class, drainage class, salinity ($EC_e$), and sodicity (ESP).
-- **Climate & Growing Window (20% weight):** Length of favorable growing season, monsoon concentration, interannual rainfall CV, and thermal stress.
+- **Climate & Growing Window (20% weight):** Length of favorable growing season, monsoon concentration, interrannual rainfall CV, and thermal stress.
 - **Strict Poor Factor Cap:** If *any* individual factor scores in the **POOR** range (<40/100), the overall score is strictly capped at **69.0/100 (MODERATE)** to prevent high performance in one variable from masking an agronomic fatal flaw.
 
 ### 2. Hamed-Rao Modified Mann-Kendall Trend Detection
-Ordinary Mann-Kendall trend tests suffer from false-positive bias when applied to hydro-meteorological time series due to positive autocorrelation (serial persistence across months and years). TeraTrend implements the **Hamed & Rao (1998) Modified Mann-Kendall test**:
+Ordinary Mann-Kendall trend tests suffer from false-positive bias when applied to hydro-meteorological time series due to positive autocorrelation (serial persistence across months and years). terraTrend implements the **Hamed & Rao (1998) Modified Mann-Kendall test**:
 - Calculates the empirical autocorrelation structure up to lag-$k$.
 - Computes the variance correction factor $\frac{n}{n^*}$ to adjust the variance of the Mann-Kendall test statistic $S$.
 - Computes **Sen's robust non-parametric slope estimator** ($\beta$) and 10-year climatic outlooks.
 - **Strict $p < 0.05$ Gate:** The system only issues crop-shift or adaptation recommendations if a trend is statistically verified ($p < 0.05$). If $p \ge 0.05$, the system explicitly advises *"Conditions Stable (No Significant Trend) — Maintain standard rotation."*
 
 ### 3. Multi-Satellite Sensor Consensus
-To ensure high evidence confidence, TeraTrend cross-evaluates overlapping satellite sensors:
+To ensure high evidence confidence, terraTrend cross-evaluates overlapping satellite sensors:
 - **Temperature:** GLDAS Noah 0.25° vs. MERRA-2 0.5° vs. AIRS Level 3.
 - **Rainfall:** GLDAS Noah vs. MERRA-2 vs. GPM IMERG Final Run v07.
 - **Consensus Tiers:** Evaluated as `STRONG` (all sensors agree in sign, slope magnitude, and significance), `MODERATE`, `WEAK`, `CONFLICTING` (sensors disagree), or `SINGLE_SOURCE`.
 
 ### 4. CACP Farm Economics & Risk Engine
-Unlike standard agronomic tools that stop at suitability ratings, TeraTrend integrates official cost of cultivation benchmarks from the **Commission for Agricultural Costs and Prices (CACP)** and the **Directorate of Economics and Statistics (DES)**:
+Unlike standard agronomic tools that stop at suitability ratings, terraTrend integrates official cost of cultivation benchmarks from the **Commission for Agricultural Costs and Prices (CACP)** and the **Directorate of Economics and Statistics (DES)**:
 - **Dual Cost Basis:**
   - **A2+FL:** Actual paid-out expenses (seeds, fertilizers, manure, pesticides, hired human labour, bullock/machine labour, irrigation, interest) plus imputed value of unpaid family labour.
   - **C2 (Comprehensive Cost):** A2+FL plus imputed rental value of owned land and interest on owned fixed capital assets.
@@ -112,7 +112,7 @@ Unlike standard agronomic tools that stop at suitability ratings, TeraTrend inte
 
 ## NASA & Earth Observation Datasets Used
 
-| Sensor / Mission | Collection | Provider / DAAC | Spatial / Temporal Res | TeraTrend Indicator |
+| Sensor / Mission | Collection | Provider / DAAC | Spatial / Temporal Res | terraTrend Indicator |
 | :--- | :--- | :--- | :--- | :--- |
 | **GLDAS Noah Land Surface** | `GLDAS_NOAH025_M` v2.1 | NASA GES DISC | 0.25° / Monthly (2010–2024) | Air Temperature, Rainfall Flux, Root Soil Moisture, Evapotranspiration |
 | **MERRA-2 Reanalysis** | `M2TMNXSLV` / `FLX` / `LND` v5.12.4 | NASA GMAO / GES DISC | 0.50° / Monthly (2010–2024) | 2m Temperature, Corrected Precipitation, Evaporation, Root Wetness |
@@ -126,7 +126,7 @@ Unlike standard agronomic tools that stop at suitability ratings, TeraTrend inte
 
 ## System Architecture
 
-TeraTrend follows a **Clean Hexagonal Architecture**: scientific numerical engines and agronomic models are completely pure (zero dependencies on web frameworks or databases), hydrated via in-memory dependency injection.
+terraTrend follows a **Clean Hexagonal Architecture**: scientific numerical engines and agronomic models are completely pure (zero dependencies on web frameworks or databases), hydrated via in-memory dependency injection.
 
 ```mermaid
 flowchart TD
@@ -173,16 +173,16 @@ flowchart TD
 
 ---
 
-## Interactive Web Experience
+## Interractive Web Experience
 
 The web application is structured into **four purposeful pages**:
 
 1. **Landing Page (`/`):** Clean editorial layout featuring live NASA telemetry status, feature overview, core value proposition, and quick links.
 2. **Decision Engine (`/decision`):**
-   - Click-to-query interactive Leaflet map of India with district boundaries.
+   - Click-to-query interractive Leaflet map of India with district boundaries.
    - 5-factor Land Report Card with GOOD / MODERATE / POOR badges and 10-year outlook.
    - Ranked suited crops and clear misfits with limiting factor diagnostics.
-   - Interactive CACP Economics Workspace: toggle **A2+FL** vs. **C2**, switch between Market and MSP price bases, and test sandbox sliders (Yield, Market Price, Cultivation Cost).
+   - Interractive CACP Economics Workspace: toggle **A2+FL** vs. **C2**, switch between Market and MSP price bases, and test sandbox sliders (Yield, Market Price, Cultivation Cost).
 3. **Trend Explorer (`/explorer`):**
    - 15-year multi-sensor time series visualization with Chart.js.
    - Indicator picker (Temperature, Rainfall, Root Moisture, Evapotranspiration, NDVI, NO₂).
@@ -201,8 +201,8 @@ The web application is structured into **four purposeful pages**:
 
 ### 1. Clone & Set Up Virtual Environment
 ```bash
-git clone https://github.com/your-username/teratrend.git
-cd teratrend
+git clone https://github.com/your-username/terratrend.git
+cd terratrend
 
 # Create and activate virtual environment
 python -m venv venv
@@ -249,7 +249,7 @@ Open your browser to: **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 
 ## CLI & Database Operations
 
-TeraTrend provides a unified management CLI via `python -m db.cli`:
+terraTrend provides a unified management CLI via `python -m db.cli`:
 
 | Command | Description |
 | :--- | :--- |
@@ -265,7 +265,7 @@ TeraTrend provides a unified management CLI via `python -m db.cli`:
 
 ## Automated Testing & Verification
 
-TeraTrend includes an extensive automated test suite covering pure numerical algorithms, spatial containment, AST import purity, database repositories, caching, and REST endpoints.
+terraTrend includes an extensive automated test suite covering pure numerical algorithms, spatial containment, AST import purity, database repositories, caching, and REST endpoints.
 
 ```bash
 # Run full test suite with verbose output
@@ -316,4 +316,4 @@ python -m pytest backend/tests/ -v
 
 - **Scientific & Software License:** Distributed under the MIT License.
 - **Boundary Disclaimer:** All administrative state and district boundary layers are strictly compliant with the official political map of the Government of India (Survey of India).
-- **Advisory Disclaimer:** TeraTrend provides indicative geospatial decision support and risk estimates for farm planning. It does not constitute financial guarantees of crop yields or market prices. Agricultural decisions should combine TeraTrend insights with on-ground soil testing and local Krishi Vigyan Kendra (KVK) extension recommendations.
+- **Advisory Disclaimer:** terraTrend provides indicative geospatial decision support and risk estimates for farm planning. It does not constitute financial guarantees of crop yields or market prices. Agricultural decisions should combine terraTrend insights with on-ground soil testing and local Krishi Vigyan Kendra (KVK) extension recommendations.
